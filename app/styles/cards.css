@@ -1,36 +1,157 @@
+/* ---------- Product cards ---------- */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .product-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 260px;
-  padding: 22px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
 }
 
-.product-card p:not(.product-category) {
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--brand);
+  box-shadow: var(--shadow-hover);
+}
+
+.product-card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 250px;
+  padding: 26px;
+}
+
+.product-card h3 {
+  margin: 0 0 12px;
+  color: var(--brand-dark);
+}
+
+.product-summary {
   flex: 1;
+}
+
+.product-category {
+  display: inline-block;
+  align-self: flex-start;
+  margin: 0 0 14px;
+  padding: 5px 12px;
+  color: var(--brand-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--brand-soft);
+  border-radius: 999px;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.product-tags li {
+  padding: 4px 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  background: var(--surface-muted);
+  border: 1px solid var(--line);
+  border-radius: 8px;
 }
 
 .text-link {
   display: inline-flex;
   gap: 6px;
   align-items: center;
-  color: var(--brand-dark);
+  margin-top: auto;
+  color: var(--brand);
   font-weight: 700;
 }
 
+.product-card:hover .text-link {
+  color: var(--brand-dark);
+}
+
+.product-card:hover .text-link svg {
+  transform: translateX(4px);
+}
+
+.text-link svg {
+  transition: transform 0.18s ease;
+}
+
+/* ---------- Strengths ---------- */
+.strength-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.strength-card {
+  position: relative;
+  padding: 26px 24px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.strength-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.strength-index {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--brand);
+  font-size: 1.6rem;
+  font-weight: 800;
+  opacity: 0.55;
+}
+
+.strength-card h3 {
+  margin: 0 0 10px;
+  color: var(--brand-dark);
+  font-size: 1.08rem;
+}
+
+.strength-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s ease;
+}
+
+.strength-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Gallery ---------- */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .gallery-item {
@@ -39,27 +160,43 @@
   overflow: hidden;
   aspect-ratio: 4 / 3;
   background: var(--surface);
-  border-radius: 8px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .gallery-image {
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
+.gallery-item:hover .gallery-image {
+  transform: scale(1.07);
+}
+
+/* ---------- Contact ---------- */
 .contact-panel {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .contact-item {
   display: flex;
   gap: 14px;
   min-height: 116px;
-  padding: 22px;
+  padding: 24px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand);
 }
 
 .contact-item svg {
@@ -77,73 +214,126 @@
   line-height: 1.55;
 }
 
+/* ---------- Product detail layout ---------- */
 .detail-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: 28px;
   align-items: start;
 }
 
-.detail-main,
-.spec-panel {
+.detail-main {
+  padding: 34px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-.detail-main {
-  padding: 30px;
-}
-
-.detail-main section {
-  margin-top: 30px;
-}
-
-.check-list {
+.detail-aside {
+  position: sticky;
+  top: 96px;
   display: grid;
-  gap: 10px;
-  padding-left: 20px;
-  color: var(--muted);
-  line-height: 1.7;
+  gap: 16px;
 }
 
 .spec-panel {
-  padding: 24px;
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.aside-title {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  color: var(--brand-dark);
+  font-size: 1.02rem;
+  border-bottom: 2px solid var(--brand-soft);
+}
+
+.aside-title svg {
+  color: var(--brand);
 }
 
 .spec-panel dl {
   display: grid;
   gap: 12px;
-  margin: 0 0 22px;
+  margin: 0;
 }
 
-.spec-panel div {
+.spec-panel dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px dashed var(--line);
+}
+
+.spec-panel dl div:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .spec-panel dt {
   color: var(--muted);
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .spec-panel dd {
-  margin: 5px 0 0;
-  line-height: 1.55;
+  margin: 0;
+  text-align: right;
+  line-height: 1.5;
 }
 
-.word-detail {
-  max-width: 980px;
-  padding: 30px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+.check-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
+.packaging p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.contact-card {
+  background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+  border: none;
+}
+
+.contact-card .aside-title {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+.contact-line {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.contact-phone {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: #fff;
+  font-size: 1.24rem;
+  font-weight: 800;
+}
+
+/* ---------- Word document ---------- */
 .word-document {
   display: grid;
   gap: 12px;
-  max-width: 980px;
 }
 
 .word-paragraph {
@@ -154,9 +344,13 @@
 }
 
 .word-title {
-  font-size: 1.32rem;
+  padding-bottom: 14px;
+  margin-bottom: 6px;
+  color: var(--brand-dark);
+  font-size: 1.42rem;
   font-weight: 700;
   line-height: 1.45;
+  border-bottom: 2px solid var(--brand-soft);
 }
 
 .word-table-scroll {
@@ -166,7 +360,7 @@
 
 .word-table {
   width: 100%;
-  min-width: 520px;
+  min-width: 480px;
   border-collapse: collapse;
   background: #fff;
 }
@@ -181,7 +375,11 @@
 }
 
 .word-table th {
-  color: var(--brand-dark);
+  color: #fff;
+  background: var(--brand);
+}
+
+.word-table tbody tr:nth-child(even) {
   background: var(--surface-muted);
 }
 
@@ -189,11 +387,42 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
 }
 
-.button.muted {
-  color: var(--brand-dark);
-  border-color: var(--line);
-  background: var(--surface-muted);
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.breadcrumb a {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.18s ease;
+}
+
+.breadcrumb a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.breadcrumb-item [aria-current='page'] {
+  color: #fff;
+  font-weight: 600;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { Breadcrumb } from '@/components/Breadcrumb'
 import { ProductDetailView } from '@/components/ProductDetailView'
 import { getBuildSite, getProductBySlug, getStaticProductSlugs } from '@/data/sites'
 
@@ -46,12 +47,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <>
-      <section className="page-hero compact">
-        <p className="eyebrow">{site.shortName}</p>
+      <section className="page-hero product-hero">
+        <Breadcrumb items={[{ label: '产品', href: '/#products' }, { label: product.name }]} />
+        <p className="eyebrow">{product.category}</p>
         <h1>{product.name}</h1>
+        <p className="page-hero-summary">{product.summary}</p>
       </section>
-      <section className="section">
-        <ProductDetailView product={product} />
+      <section className="section detail-section">
+        <ProductDetailView site={site} product={product} />
       </section>
     </>
   )

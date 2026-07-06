@@ -33,12 +33,20 @@ export type CompanySite = Readonly<{
   key: SiteKey
   name: string
   shortName: string
+  slogan: string
   logo: string
+  heroImage: string
   intro: NonEmptyReadonlyArray<string>
   introDocument: readonly DocumentBlock[]
+  strengths: NonEmptyReadonlyArray<SiteStrength>
   address: string
   contactName: string
   phone: string
   products: NonEmptyReadonlyArray<Product>
   factoryImages: NonEmptyReadonlyArray<string>
+}>
+
+export type SiteStrength = Readonly<{
+  title: string
+  description: string
 }>

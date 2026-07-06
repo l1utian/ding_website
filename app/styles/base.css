@@ -1,23 +1,37 @@
 :root {
-  --bg: #f7f8f5;
+  /* 积科科技 —— 以绿色魔方 LOGO 为主配色 */
+  --bg: #f5f9f4;
   --surface: #ffffff;
-  --surface-muted: #edf2ef;
-  --text: #17211d;
-  --muted: #59665f;
-  --line: #d9e0dc;
-  --brand: #146c63;
-  --brand-dark: #0d403b;
-  --accent: #b7771c;
-  --shadow: 0 16px 45px rgba(23, 33, 29, 0.12);
+  --surface-muted: #eaf4ea;
+  --text: #16241a;
+  --muted: #566a5c;
+  --line: #d7e5d9;
+  --brand: #2f9e44;
+  --brand-dark: #1b6b2e;
+  --brand-soft: rgba(47, 158, 68, 0.12);
+  --accent: #7cb518;
+  --hero-tint: rgba(20, 54, 28, 0.06);
+  --shadow: 0 16px 45px rgba(20, 54, 28, 0.12);
+  --shadow-hover: 0 24px 60px rgba(20, 54, 28, 0.2);
+  --radius: 14px;
   --max: 1180px;
 }
 
 body[data-site='alpha'] {
-  --bg: #f6f8fb;
-  --surface-muted: #edf3f4;
-  --brand: #22577a;
+  /* 阿尔法 —— 以钛蓝 + 金黄弧线 LOGO 为主配色 */
+  --bg: #f4f8fc;
+  --surface: #ffffff;
+  --surface-muted: #e9f1f9;
+  --text: #14202b;
+  --muted: #566573;
+  --line: #d4e2ee;
+  --brand: #1f6fb2;
   --brand-dark: #17384f;
-  --accent: #3f8f63;
+  --brand-soft: rgba(31, 111, 178, 0.12);
+  --accent: #f5a623;
+  --hero-tint: rgba(20, 43, 66, 0.06);
+  --shadow: 0 16px 45px rgba(20, 43, 66, 0.12);
+  --shadow-hover: 0 24px 60px rgba(20, 43, 66, 0.2);
 }
 
 * {
@@ -29,6 +43,17 @@ html {
   color: var(--text);
   font-family: Arial, 'Microsoft YaHei', sans-serif;
   letter-spacing: 0;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+[id] {
+  scroll-margin-top: 88px;
 }
 
 body {

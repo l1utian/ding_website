@@ -5,16 +5,14 @@ type SiteFooterProps = Readonly<{
 }>
 
 export function SiteFooter({ site }: SiteFooterProps) {
+  const year = new Date().getFullYear()
+
   return (
     <footer className="site-footer">
-      <div>
-        <strong>{site.name}</strong>
-        <p>{site.address}</p>
-      </div>
-      <div>
-        <span>联系人：{site.contactName}</span>
-        <span>电话：{site.phone}</span>
-      </div>
+      <span className="footer-brand">{site.name}</span>
+      <span className="footer-copy">
+        © {year} {site.shortName}· 环保助剂与高分子新材料
+      </span>
     </footer>
   )
 }

@@ -1,3 +1,18 @@
+@media (max-width: 1024px) {
+  .strength-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-aside {
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 860px) {
   .site-header,
   .site-footer {
@@ -5,16 +20,8 @@
     flex-direction: column;
   }
 
-  .brand {
-    min-width: 0;
-  }
-
   .brand-name {
     max-width: none;
-  }
-
-  .site-nav {
-    justify-content: flex-start;
   }
 
   h1 {
@@ -24,12 +31,30 @@
   .product-grid,
   .gallery-grid,
   .contact-panel,
-  .detail-layout {
+  .strength-grid,
+  .detail-aside {
     grid-template-columns: 1fr;
   }
 
   .hero,
-  .hero-overlay {
-    min-height: 620px;
+  .hero-inner {
+    min-height: 560px;
+  }
+
+  .hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.82) 55%,
+      rgba(255, 255, 255, 0.55) 100%
+    );
+  }
+
+  .section {
+    padding: 52px max(20px, calc((100vw - var(--max)) / 2));
+  }
+
+  .detail-main {
+    padding: 24px;
   }
 }

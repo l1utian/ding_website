@@ -1,4 +1,4 @@
-import { ArrowRight, Factory, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Factory, Leaf, ShieldCheck } from 'lucide-react'
 
 import type { CompanySite } from '@/data/types'
 
@@ -7,19 +7,17 @@ type HeroProps = Readonly<{
 }>
 
 export function Hero({ site }: HeroProps) {
-  const [heroImage] = site.factoryImages
-
   return (
-    <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
-      <div className="hero-overlay">
-        <p className="eyebrow">{site.shortName}</p>
-        <h1>{site.name}</h1>
-        <p className="hero-copy">{site.intro[0]}</p>
+    <section className="hero" style={{ backgroundImage: `url(${site.heroImage})` }}>
+      <div className="hero-inner">
+        <p className="eyebrow hero-eyebrow">{site.shortName}</p>
+        <h1 className="hero-title">{site.name}</h1>
+        <p className="hero-slogan">{site.slogan}</p>
         <div className="hero-actions">
-          <a className="button primary" href="/products/">
+          <a className="button primary" href="#products">
             查看产品 <ArrowRight aria-hidden="true" size={18} />
           </a>
-          <a className="button secondary" href="/contact/">
+          <a className="button ghost" href="#contact">
             联系我们
           </a>
         </div>
@@ -28,7 +26,10 @@ export function Hero({ site }: HeroProps) {
             <Factory aria-hidden="true" size={18} /> 生产与研发配套
           </span>
           <span>
-            <ShieldCheck aria-hidden="true" size={18} /> 环保助剂方案
+            <ShieldCheck aria-hidden="true" size={18} /> 环保合规助剂
+          </span>
+          <span>
+            <Leaf aria-hidden="true" size={18} /> 绿色低碳材料
           </span>
         </div>
       </div>

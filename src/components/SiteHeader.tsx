@@ -6,13 +6,6 @@ type SiteHeaderProps = Readonly<{
   site: CompanySite
 }>
 
-const NAV_ITEMS = [
-  { href: '/', label: '首页' },
-  { href: '/about/', label: '公司介绍' },
-  { href: '/products/', label: '产品中心' },
-  { href: '/contact/', label: '联系我们' },
-] as const
-
 export function SiteHeader({ site }: SiteHeaderProps) {
   return (
     <header className="site-header">
@@ -27,13 +20,6 @@ export function SiteHeader({ site }: SiteHeaderProps) {
         />
         <span className="brand-name">{site.name}</span>
       </a>
-      <nav className="site-nav" aria-label="主导航">
-        {NAV_ITEMS.map((item) => (
-          <a key={item.href} href={item.href}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
     </header>
   )
 }
