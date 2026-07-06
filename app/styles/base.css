@@ -1,0 +1,79 @@
+:root {
+  --bg: #f7f8f5;
+  --surface: #ffffff;
+  --surface-muted: #edf2ef;
+  --text: #17211d;
+  --muted: #59665f;
+  --line: #d9e0dc;
+  --brand: #146c63;
+  --brand-dark: #0d403b;
+  --accent: #b7771c;
+  --shadow: 0 16px 45px rgba(23, 33, 29, 0.12);
+  --max: 1180px;
+}
+
+body[data-site='alpha'] {
+  --bg: #f6f8fb;
+  --surface-muted: #edf3f4;
+  --brand: #22577a;
+  --brand-dark: #17384f;
+  --accent: #3f8f63;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, 'Microsoft YaHei', sans-serif;
+  letter-spacing: 0;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 860px;
+  margin-bottom: 20px;
+  font-size: 2.7rem;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: 1.18rem;
+  line-height: 1.35;
+}
+
+.eyebrow,
+.product-category {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+}

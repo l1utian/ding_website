@@ -1,0 +1,44 @@
+export type SiteKey = 'jike' | 'alpha'
+
+export type NonEmptyReadonlyArray<T> = readonly [T, ...T[]]
+
+export type ProductSpec = Readonly<{
+  label: string
+  value: string
+}>
+
+export type DocumentBlock =
+  | Readonly<{
+      type: 'paragraph'
+      text: string
+    }>
+  | Readonly<{
+      type: 'table'
+      rows: readonly (readonly string[])[]
+    }>
+
+export type Product = Readonly<{
+  slug: string
+  name: string
+  category: string
+  summary: string
+  features: readonly string[]
+  specs: readonly ProductSpec[]
+  applications: readonly string[]
+  document: readonly DocumentBlock[]
+  packaging?: string
+}>
+
+export type CompanySite = Readonly<{
+  key: SiteKey
+  name: string
+  shortName: string
+  logo: string
+  intro: NonEmptyReadonlyArray<string>
+  introDocument: readonly DocumentBlock[]
+  address: string
+  contactName: string
+  phone: string
+  products: NonEmptyReadonlyArray<Product>
+  factoryImages: NonEmptyReadonlyArray<string>
+}>

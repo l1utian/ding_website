@@ -1,0 +1,35 @@
+@media (max-width: 860px) {
+  .site-header,
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-name {
+    max-width: none;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  .product-grid,
+  .gallery-grid,
+  .contact-panel,
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .hero-overlay {
+    min-height: 620px;
+  }
+}

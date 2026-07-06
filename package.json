@@ -1,0 +1,32 @@
+{
+  "name": "ding-dual-portal",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.7.0",
+  "scripts": {
+    "dev:jike": "cross-env SITE_KEY=jike next dev",
+    "dev:alpha": "cross-env SITE_KEY=alpha next dev -p 3001",
+    "build:jike": "cross-env SITE_KEY=jike next build && node scripts/save-out.mjs jike",
+    "build:alpha": "cross-env SITE_KEY=alpha next build && node scripts/save-out.mjs alpha",
+    "build:all": "pnpm build:jike && pnpm build:alpha",
+    "extract:word": "python scripts/extract-word-documents.py",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest --run"
+  },
+  "dependencies": {
+    "cross-env": "10.1.0",
+    "lucide-react": "1.23.0",
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@types/node": "26.1.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "typescript": "6.0.3",
+    "vitest": "4.1.9"
+  }
+}

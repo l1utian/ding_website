@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "深圳市积科科技有限公司首页" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "深圳市积科科技有限公司 LOGO" [ref=e4]
+      - generic [ref=e5]: 深圳市积科科技有限公司
+    - navigation "主导航" [ref=e6]:
+      - link "首页" [ref=e7] [cursor=pointer]:
+        - /url: /
+      - link "公司介绍" [ref=e8] [cursor=pointer]:
+        - /url: /about/
+      - link "产品中心" [ref=e9] [cursor=pointer]:
+        - /url: /products/
+      - link "联系我们" [ref=e10] [cursor=pointer]:
+        - /url: /contact/
+  - main [ref=e11]:
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: 积科科技
+      - heading "深圳市积科科技有限公司" [level=1] [ref=e15]
+      - paragraph [ref=e16]: 深圳市积科科技有限公司坐落于深圳，是一家专注于高分子环保助剂研发、生产、销售与技术服务一体化的现代化精细化工企业。公司深耕 PVC、CPVC 热稳定材料赛道多年，核心主营PVC 环保热稳定剂、CPVC 环保热稳定剂，同步自主生产赛克（三 (2 - 羟乙基) 异氰尿酸酯 / THEIC），构建起 “稳定剂成品 + 核心协效原料” 一体化产品体系，为橡塑、涂料、绝缘材料行业提供一站式环保解决方案。
+      - generic [ref=e17]:
+        - link "查看产品" [ref=e18] [cursor=pointer]:
+          - /url: /products/
+          - text: 查看产品
+          - img [ref=e19]
+        - link "联系我们" [ref=e21] [cursor=pointer]:
+          - /url: /contact/
+      - generic "企业能力" [ref=e22]:
+        - generic [ref=e23]:
+          - img [ref=e24]
+          - text: 生产与研发配套
+        - generic [ref=e26]:
+          - img [ref=e27]
+          - text: 环保助剂方案
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: Company
+        - heading "公司简介" [level=2] [ref=e33]
+        - paragraph [ref=e34]: 聚焦环保助剂与高分子新材料应用，服务 PVC、CPVC 及相关橡塑产业。
+      - generic [ref=e35]:
+        - paragraph [ref=e36]: 深圳市积科科技有限公司坐落于深圳，是一家专注于高分子环保助剂研发、生产、销售与技术服务一体化的现代化精细化工企业。公司深耕 PVC、CPVC 热稳定材料赛道多年，核心主营PVC 环保热稳定剂、CPVC 环保热稳定剂，同步自主生产赛克（三 (2 - 羟乙基) 异氰尿酸酯 / THEIC），构建起 “稳定剂成品 + 核心协效原料” 一体化产品体系，为橡塑、涂料、绝缘材料行业提供一站式环保解决方案。
+        - paragraph [ref=e37]: 积科科技配备标准化自动化生产车间与独立研发实验室，组建专业化工研发与应用技术团队，持续优化合成工艺与产品配方，严控原料甄选、生产加工、成品检测全流程品质，建立完善质量管控体系，保障产品批次稳定、供货充足。依托深圳区位优势与成熟供应链，公司兼顾国内市场深耕与外贸出口，可为客户提供定制化配方研发、现场工艺指导、样品测试等配套技术支持。
+        - paragraph [ref=e38]: 秉持 “科技赋能绿色橡塑，品质铸就长久合作” 的经营理念，积科科技以环保、高效、高性价比的助剂产品为核心竞争力，持续聚焦高分子新材料创新，致力成为 PVC/CPVC 环保热稳定剂与赛克领域值得信赖的源头生产服务商，携手下游产业共建低碳、安全、可持续的橡塑新材料生态。
+        - paragraph [ref=e39]: 深圳市积科科技有限公司
+        - paragraph [ref=e40]: 地址：深圳市坪山区坪山街道六联社区福安西一巷
+        - paragraph [ref=e41]: 联系人：丁丁
+        - paragraph [ref=e42]: 联系电话：13155217718
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - paragraph [ref=e45]: Products
+        - heading "核心产品" [level=2] [ref=e46]
+        - paragraph [ref=e47]: 从原始资料整理的产品信息。
+      - generic [ref=e48]:
+        - article [ref=e49]:
+          - paragraph [ref=e50]: PVC热稳定剂
+          - heading "JK-100 环保热稳定剂" [level=3] [ref=e51]
+          - paragraph [ref=e52]: 专为 PVC 高温加工研发的替代有机锡复合稳定剂，适配各类硬质制品的高温成型需求。
+          - link "查看详情" [ref=e53] [cursor=pointer]:
+            - /url: /products/jk-100/
+            - text: 查看详情
+            - img [ref=e54]
+        - article [ref=e56]:
+          - paragraph [ref=e57]: CPVC热稳定剂
+          - heading "AOS-10 有机稳定剂（CPVC专用）" [level=3] [ref=e58]
+          - paragraph [ref=e59]: 专为 CPVC 高温加工研发的有机复合稳定剂，不含有机锡，兼具热稳定性与加工适配性。
+          - link "查看详情" [ref=e60] [cursor=pointer]:
+            - /url: /products/aos-10/
+            - text: 查看详情
+            - img [ref=e61]
+        - article [ref=e63]:
+          - paragraph [ref=e64]: 功能助剂
+          - heading "赛克" [level=3] [ref=e65]
+          - paragraph [ref=e66]: 三羟乙基异氰尿酸酯，用于 PVC 塑料稳定剂、耐热漆包线等产品的生产制造。
+          - link "查看详情" [ref=e67] [cursor=pointer]:
+            - /url: /products/theic/
+            - text: 查看详情
+            - img [ref=e68]
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - paragraph [ref=e72]: Factory
+        - heading "生产车间" [level=2] [ref=e73]
+      - generic [ref=e74]:
+        - figure [ref=e75]:
+          - img "积科科技工厂照片 1" [ref=e76]
+        - figure [ref=e77]:
+          - img "积科科技工厂照片 2" [ref=e78]
+        - figure [ref=e79]:
+          - img "积科科技工厂照片 3" [ref=e80]
+        - figure [ref=e81]:
+          - img "积科科技工厂照片 4" [ref=e82]
+        - figure [ref=e83]:
+          - img "积科科技工厂照片 5" [ref=e84]
+        - figure [ref=e85]:
+          - img "积科科技工厂照片 6" [ref=e86]
+    - generic [ref=e87]:
+      - generic [ref=e88]:
+        - paragraph [ref=e89]: Contact
+        - heading "联系方式" [level=2] [ref=e90]
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - img [ref=e93]
+          - generic [ref=e96]:
+            - generic [ref=e97]: 公司地址
+            - strong [ref=e98]: 深圳市坪山区坪山街道六联社区福安西一巷
+        - generic [ref=e99]:
+          - img [ref=e100]
+          - generic [ref=e103]:
+            - generic [ref=e104]: 联系人
+            - strong [ref=e105]: 丁丁
+        - generic [ref=e106]:
+          - img [ref=e107]
+          - generic [ref=e109]:
+            - generic [ref=e110]: 联系电话
+            - strong [ref=e111]: "13155217718"
+  - contentinfo [ref=e112]:
+    - generic [ref=e113]:
+      - strong [ref=e114]: 深圳市积科科技有限公司
+      - paragraph [ref=e115]: 深圳市坪山区坪山街道六联社区福安西一巷
+    - generic [ref=e116]:
+      - generic [ref=e117]: 联系人：丁丁
+      - generic [ref=e118]: 电话：13155217718
+  - alert [ref=e119]
