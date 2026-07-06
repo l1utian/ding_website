@@ -8,27 +8,21 @@ type ContactPanelProps = Readonly<{
 
 export function ContactPanel({ site }: ContactPanelProps) {
   return (
-    <div className="contact-panel">
-      <div className="contact-item">
-        <MapPin aria-hidden="true" size={22} />
-        <div>
-          <span>公司地址</span>
-          <strong>{site.address}</strong>
-        </div>
+    <div className="contact-info">
+      <div className="contact-info-item">
+        <MapPin aria-hidden="true" size={20} />
+        <span className="contact-info-label">公司地址</span>
+        <span className="contact-info-value">{site.address}</span>
       </div>
-      <div className="contact-item">
-        <UserRound aria-hidden="true" size={22} />
-        <div>
-          <span>联系人</span>
-          <strong>{site.contactName}</strong>
-        </div>
+      <div className="contact-info-item">
+        <UserRound aria-hidden="true" size={20} />
+        <span className="contact-info-label">联系人</span>
+        <span className="contact-info-value">{site.contactName}</span>
       </div>
-      <div className="contact-item">
-        <Phone aria-hidden="true" size={22} />
-        <div>
-          <span>联系电话</span>
-          <strong>{site.phone}</strong>
-        </div>
+      <div className="contact-info-item">
+        <Phone aria-hidden="true" size={20} />
+        <span className="contact-info-label">联系电话</span>
+        <a className="contact-info-value" href={`tel:${site.phone}`}>{site.phone}</a>
       </div>
     </div>
   )

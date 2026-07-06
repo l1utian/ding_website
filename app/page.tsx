@@ -4,7 +4,6 @@ import { Hero } from '@/components/Hero'
 import { ProductGrid } from '@/components/ProductGrid'
 import { Reveal } from '@/components/Reveal'
 import { SectionTitle } from '@/components/SectionTitle'
-import { WordDocument } from '@/components/WordDocument'
 import { getBuildSite } from '@/data/sites'
 
 export default function HomePage() {
@@ -14,10 +13,11 @@ export default function HomePage() {
     <>
       <Hero site={site} />
 
-      <section className="section" id="about">
+      <section className="section section-decorated" id="about">
+        <div className="deco-molecules" aria-hidden="true" />
         <Reveal>
           <SectionTitle
-            eyebrow="Company"
+            eyebrow="About Us"
             title="公司简介"
             summary="聚焦环保助剂与高分子新材料应用，服务 PVC、CPVC 及相关橡塑产业。"
           />
@@ -31,9 +31,14 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      <section className="section band" id="strengths">
+      <section className="section band section-decorated" id="strengths">
+        <div className="deco-gears" aria-hidden="true" />
         <Reveal>
-          <SectionTitle eyebrow="Strengths" title="核心优势" summary="以品质与技术服务下游橡塑新材料产业。" />
+          <SectionTitle
+            eyebrow="Core Strengths"
+            title="核心优势"
+            summary="以自有工厂和独立研发实验室为依托，服务橡塑新材料产业。"
+          />
         </Reveal>
         <div className="strength-grid">
           {site.strengths.map((strength, index) => (
@@ -46,28 +51,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section" id="products">
+      <section className="section section-decorated" id="products">
+        <div className="deco-hexagons" aria-hidden="true" />
         <Reveal>
-          <SectionTitle eyebrow="Products" title="核心产品" summary="点击任意产品查看与原始资料一致的详细说明。" />
+          <SectionTitle
+            eyebrow="Products"
+            title="产品中心"
+            summary="点击任意产品查看与原始资料一致的详细说明。"
+          />
         </Reveal>
         <ProductGrid products={site.products} />
       </section>
 
       <section className="section band" id="factory">
         <Reveal>
-          <SectionTitle eyebrow="Factory" title="生产车间" summary="标准化自动化生产车间与独立研发实验室。" />
+          <SectionTitle
+            eyebrow="Production Base"
+            title="生产基地"
+            summary="标准化自动化生产车间与独立研发实验室，保障产品品质稳定。"
+          />
         </Reveal>
         <Reveal delay={80}>
           <FactoryGallery site={site} />
         </Reveal>
       </section>
 
-      <section className="section" id="contact">
+      <section className="section section-decorated" id="contact">
+        <div className="deco-flow" aria-hidden="true" />
         <Reveal>
-          <SectionTitle eyebrow="Contact" title="联系方式" summary="欢迎咨询产品选型、定制配方与样品测试。" />
+          <SectionTitle
+            eyebrow="Contact Us"
+            title="联系我们"
+          />
         </Reveal>
         <Reveal delay={80}>
           <ContactPanel site={site} />
+        </Reveal>
+        <Reveal delay={120}>
+          <p className="contact-note">欢迎咨询产品选型、定制配方与样品测试。</p>
         </Reveal>
       </section>
     </>

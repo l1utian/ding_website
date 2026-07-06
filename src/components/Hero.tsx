@@ -23,7 +23,7 @@ export function Hero({ site }: HeroProps) {
         </div>
         <div className="hero-points" aria-label="企业能力">
           <span>
-            <Factory aria-hidden="true" size={18} /> 生产与研发配套
+            <Factory aria-hidden="true" size={18} /> 自有生产工厂
           </span>
           <span>
             <ShieldCheck aria-hidden="true" size={18} /> 环保合规助剂
@@ -31,6 +31,20 @@ export function Hero({ site }: HeroProps) {
           <span>
             <Leaf aria-hidden="true" size={18} /> 绿色低碳材料
           </span>
+        </div>
+        <div className="hero-stats">
+          <div className="hero-stat">
+            <span className="hero-stat-number">10+</span>
+            <span className="hero-stat-label">年行业经验</span>
+          </div>
+          <div className="hero-stat">
+            <span className="hero-stat-number">200+</span>
+            <span className="hero-stat-label">合作客户</span>
+          </div>
+          <div className="hero-stat">
+            <span className="hero-stat-number">6000㎡</span>
+            <span className="hero-stat-label">生产基地</span>
+          </div>
         </div>
       </div>
     </section>
