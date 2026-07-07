@@ -200,15 +200,24 @@
   display: inline-flex;
   gap: 6px;
   align-items: center;
+  align-self: flex-start;
   margin-top: auto;
+  margin-left: -18px;
+  padding: 9px 18px;
   color: var(--brand);
   font-weight: 600;
   font-size: 0.9rem;
-  transition: color 0.2s ease, gap 0.2s ease;
+  background: transparent;
+  border-radius: 999px;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    gap 0.2s ease;
 }
 
 .product-card:hover .text-link {
-  color: var(--brand-dark);
+  color: #fff;
+  background: var(--brand);
   gap: 10px;
 }
 
@@ -301,7 +310,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: clamp(60px, 9vw, 150px);
+  width: clamp(28px, 4vw, 64px);
   height: 2px;
   background: repeating-linear-gradient(90deg, var(--brand) 0 7px, transparent 7px 14px);
   opacity: 0.5;
@@ -378,13 +387,11 @@
   box-shadow: var(--shadow);
   transition:
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.3s ease;
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .molecule-node:hover {
   transform: translateY(-6px);
-  border-color: var(--brand);
   box-shadow: var(--shadow-hover);
 }
 
@@ -673,51 +680,71 @@
   }
 }
 
-/* ---------- Contact Info ---------- */
+/* ---------- Contact Info（竖向联系信息列表） ---------- */
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 0;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 .contact-info-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+  padding: 22px 4px;
 }
 
-.contact-info-item svg {
+.contact-info-item + .contact-info-item {
+  border-top: 1px dashed var(--line);
+}
+
+.contact-icon {
+  display: inline-flex;
   flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
   color: var(--brand);
+  background: var(--brand-soft);
+  border-radius: 50%;
 }
 
+.contact-info-text {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+/* 固定标签宽度，保证各行数值起点对齐 */
 .contact-info-label {
+  flex: 0 0 auto;
+  min-width: 4em;
   color: var(--muted);
-  font-size: 0.88rem;
-}
-
-.contact-info-label::after {
-  content: '：';
+  font-size: 0.92rem;
 }
 
 .contact-info-value {
-  font-weight: 600;
-  font-size: 1rem;
   color: var(--text);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.6;
 }
 
 a.contact-info-value:hover {
-  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .contact-note {
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
+  max-width: 640px;
+  margin: 40px auto 0;
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.7;
+  text-align: center;
 }
 
 /* ---------- Product detail layout ---------- */

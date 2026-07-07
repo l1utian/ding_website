@@ -105,9 +105,19 @@
     display: none;
   }
 
-  .contact-info {
-    flex-direction: column;
+  .contact-info-item {
     gap: 16px;
+    padding: 18px 0;
+  }
+
+  .contact-info-text {
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+  }
+
+  .cta-band {
+    padding: 56px 20px;
   }
 
   .gallery-stage {
@@ -171,11 +181,7 @@
 
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .footer-copy {
-    text-align: left;
+    gap: 32px;
   }
 
   .detail-main {

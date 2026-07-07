@@ -63,6 +63,10 @@ SOURCES = (
         "alphaAef477",
         ROOT / "source-materials" / "alpha" / "产品列表" / "高效辅助热稳定剂AEF-477TDS.docx",
     ),
+    DocumentSource(
+        "alphaAef32",
+        ROOT / "source-materials" / "alpha" / "产品列表" / "AEF-32硬脂酸根插层镁铝水滑石.docx",
+    ),
 )
 
 

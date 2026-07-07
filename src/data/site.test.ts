@@ -22,7 +22,7 @@ describe('site data', () => {
 
   it('keeps the two company product catalogs isolated', () => {
     expect(getSite('jike').products).toHaveLength(3)
-    expect(getSite('alpha').products).toHaveLength(6)
+    expect(getSite('alpha').products).toHaveLength(7)
     expect(getProductBySlug(getSite('jike'), 'jk-100')).toBeDefined()
     expect(getProductBySlug(getSite('jike'), 'aef-18')).toBeUndefined()
     expect(getProductBySlug(getSite('alpha'), 'aef-18')).toBeDefined()

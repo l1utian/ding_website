@@ -1,5 +1,6 @@
 import { CompanyIntro } from '@/components/CompanyIntro'
 import { ContactPanel } from '@/components/ContactPanel'
+import { CtaBand } from '@/components/CtaBand'
 import { FactoryGallery } from '@/components/FactoryGallery'
 import { Hero } from '@/components/Hero'
 import { ProductGrid } from '@/components/ProductGrid'
@@ -63,6 +64,8 @@ export default function HomePage() {
           <FactoryGallery site={site} />
         </Reveal>
       </section>
+
+      <CtaBand site={site} />
 
       <section className="section section-decorated" id="contact">
         <div className="deco-flow" aria-hidden="true" />

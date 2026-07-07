@@ -94,34 +94,65 @@ body[data-site='alpha'] .site-footer::before {
 .footer-content {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.5fr) auto auto;
+  gap: 40px clamp(48px, 7vw, 120px);
+  align-items: start;
 }
 
 .footer-brand {
   font-size: 1.2rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .footer-desc {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
   max-width: 420px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.footer-heading {
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-col p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
   line-height: 1.7;
 }
 
+.footer-col a {
+  color: rgba(255, 255, 255, 0.62);
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: #fff;
+}
+
 .footer-copy {
+  margin: 0;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.5);
-  text-align: right;
+  text-align: center;
 }
 
 .footer-divider {
   position: relative;
-  margin-top: 32px;
+  margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
