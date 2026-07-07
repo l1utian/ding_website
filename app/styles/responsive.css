@@ -1,6 +1,27 @@
 @media (max-width: 1200px) {
-  .strength-grid {
+  .molecule-diagram {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding: 0;
+  }
+
+  .molecule-core {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 20px;
+  }
+
+  .molecule-bond {
+    display: none;
+  }
+
+  .molecule-node.node-1,
+  .molecule-node.node-2,
+  .molecule-node.node-3,
+  .molecule-node.node-4 {
+    grid-area: auto;
+    justify-self: stretch;
+    max-width: none;
   }
 
   .about-content {
@@ -24,6 +45,26 @@
 
   .hero-stats {
     gap: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .intro-row,
+  .intro-row.is-reversed {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .intro-row.is-reversed .intro-art {
+    order: 0;
+  }
+
+  .intro-svg {
+    width: min(100%, 330px);
+  }
+
+  .intro-text {
+    max-width: none;
   }
 }
 
@@ -54,10 +95,14 @@
   }
 
   .product-grid,
-  .strength-grid,
+  .molecule-diagram,
   .detail-aside,
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .molecule-bond {
+    display: none;
   }
 
   .contact-info {
@@ -65,8 +110,17 @@
     gap: 16px;
   }
 
-  .gallery-slide {
+  .gallery-stage {
     aspect-ratio: 16 / 9;
+  }
+
+  .gallery-thumbs {
+    justify-content: flex-start;
+  }
+
+  .gallery-thumb {
+    width: 76px;
+    height: 48px;
   }
 
   .hero,
@@ -137,14 +191,5 @@
   .hero-points {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-actions .button {
-    justify-content: center;
   }
 }

@@ -1,9 +1,11 @@
+import { CompanyIntro } from '@/components/CompanyIntro'
 import { ContactPanel } from '@/components/ContactPanel'
 import { FactoryGallery } from '@/components/FactoryGallery'
 import { Hero } from '@/components/Hero'
 import { ProductGrid } from '@/components/ProductGrid'
 import { Reveal } from '@/components/Reveal'
 import { SectionTitle } from '@/components/SectionTitle'
+import { StrengthsMolecule } from '@/components/StrengthsMolecule'
 import { getBuildSite } from '@/data/sites'
 
 export default function HomePage() {
@@ -22,13 +24,7 @@ export default function HomePage() {
             summary="聚焦环保助剂与高分子新材料应用，服务 PVC、CPVC 及相关橡塑产业。"
           />
         </Reveal>
-        <Reveal delay={80}>
-          <div className="intro-text wide">
-            {site.intro.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </Reveal>
+        <CompanyIntro site={site} />
       </section>
 
       <section className="section band section-decorated" id="strengths">
@@ -40,15 +36,7 @@ export default function HomePage() {
             summary="以自有工厂和独立研发实验室为依托，服务橡塑新材料产业。"
           />
         </Reveal>
-        <div className="strength-grid">
-          {site.strengths.map((strength, index) => (
-            <Reveal as="article" className="strength-card" key={strength.title} delay={(index % 4) * 80}>
-              <span className="strength-index">{String(index + 1).padStart(2, '0')}</span>
-              <h3>{strength.title}</h3>
-              <p>{strength.description}</p>
-            </Reveal>
-          ))}
-        </div>
+        <StrengthsMolecule site={site} />
       </section>
 
       <section className="section section-decorated" id="products">

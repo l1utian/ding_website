@@ -20,6 +20,11 @@ export function ProductGrid({ products }: ProductGridProps) {
           delay={(index % 3) * 90}
         >
           <a className="product-card-link" href={`/products/${product.slug}/`}>
+            <span className="card-molecule" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
             <span className="product-category">{product.category}</span>
             <h3>{product.name}</h3>
             <p className="product-summary">{product.summary}</p>

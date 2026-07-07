@@ -6,6 +6,7 @@
 }
 
 .product-card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -17,18 +18,117 @@
     border-color 0.3s ease;
 }
 
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .product-card:hover {
   transform: translateY(-8px);
   border-color: var(--brand);
   box-shadow: var(--shadow-hover);
 }
 
+.product-card:hover::before {
+  transform: scaleX(1);
+}
+
 .product-card-link {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   min-height: 260px;
   padding: 32px 28px;
+  overflow: hidden;
+}
+
+/* Shine sweep on hover */
+.product-card-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-18deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.product-card:hover .product-card-link::after {
+  left: 130%;
+  opacity: 1;
+  transition: left 0.7s ease, opacity 0.15s ease;
+}
+
+/* Corner molecule decoration */
+.card-molecule {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  pointer-events: none;
+}
+
+.card-molecule i {
+  position: absolute;
+  border: 2px solid var(--brand);
+  border-radius: 50%;
+  opacity: 0.18;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.card-molecule i:nth-child(1) {
+  top: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+}
+
+.card-molecule i:nth-child(2) {
+  top: 32px;
+  right: 26px;
+  width: 14px;
+  height: 14px;
+}
+
+.card-molecule i:nth-child(3) {
+  top: 12px;
+  right: 36px;
+  width: 8px;
+  height: 8px;
+  background: var(--brand);
+  border: none;
+}
+
+.product-card:hover .card-molecule i {
+  opacity: 0.5;
+}
+
+.product-card:hover .card-molecule i:nth-child(1) {
+  transform: translate(-4px, 5px) scale(1.12);
+}
+
+.product-card:hover .card-molecule i:nth-child(2) {
+  transform: translate(7px, -8px);
+}
+
+.product-card:hover .card-molecule i:nth-child(3) {
+  transform: translate(-9px, 9px) scale(1.35);
 }
 
 .product-card h3 {
@@ -42,7 +142,9 @@
 }
 
 .product-category {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   align-self: flex-start;
   margin: 0 0 16px;
   padding: 6px 14px;
@@ -53,6 +155,27 @@
   border-radius: 4px;
   letter-spacing: 0.04em;
   text-transform: none;
+}
+
+.product-category::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--brand);
+  border-radius: 50%;
+  animation: chip-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes chip-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.75);
+  }
 }
 
 .product-tags {
@@ -97,107 +220,267 @@
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---------- Strengths ---------- */
-.strength-grid {
+/* ---------- Strengths（发散分子式结构） ---------- */
+.molecule-diagram {
+  --core-size: clamp(150px, 15vw, 196px);
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) var(--core-size) minmax(0, 1fr);
+  gap: 56px clamp(40px, 6vw, 96px);
+  align-items: center;
+  padding: 24px 0;
 }
 
-.strength-card {
+/* 中心原子核 */
+.molecule-core {
   position: relative;
-  padding: 32px 28px;
-  overflow: hidden;
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  width: var(--core-size);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 32% 28%, #ffffff 0%, var(--brand-soft) 100%);
+  border: 2px solid var(--brand);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 12px var(--brand-soft),
+    0 16px 44px rgba(var(--shadow-tint), 0.1);
+}
+
+.molecule-core-label {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+  color: var(--brand-dark);
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.molecule-core-ring {
+  position: absolute;
+  border: 1px dashed var(--brand);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.molecule-core-ring.ring-a {
+  inset: -18px;
+  opacity: 0.4;
+  animation: orbit-spin 24s linear infinite;
+}
+
+.molecule-core-ring.ring-b {
+  inset: -36px;
+  opacity: 0.22;
+  animation: orbit-spin 38s linear infinite reverse;
+}
+
+.molecule-core-ring::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  background: var(--brand);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--brand);
+}
+
+/* 化学键：由核心向四角发散，电子沿键流动 */
+.molecule-bond {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(60px, 9vw, 150px);
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--brand) 0 7px, transparent 7px 14px);
+  opacity: 0.5;
+  transform-origin: 0 50%;
+  transform: rotate(var(--bond-angle, 0deg)) translateX(calc(var(--core-size) / 2 + 40px));
+}
+
+.molecule-bond::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  background: var(--brand);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--brand);
+  animation: electron-travel 3s ease-in-out infinite;
+  animation-delay: var(--bond-delay, 0s);
+}
+
+.molecule-bond.bond-1 {
+  --bond-angle: -150deg;
+}
+
+.molecule-bond.bond-2 {
+  --bond-angle: -30deg;
+  --bond-delay: 0.7s;
+}
+
+.molecule-bond.bond-3 {
+  --bond-angle: 150deg;
+  --bond-delay: 1.4s;
+}
+
+.molecule-bond.bond-4 {
+  --bond-angle: 30deg;
+  --bond-delay: 2.1s;
+}
+
+@keyframes electron-travel {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  14% {
+    opacity: 1;
+  }
+
+  86% {
+    opacity: 1;
+  }
+
+  100% {
+    left: calc(100% - 8px);
+    opacity: 0;
+  }
+}
+
+/* 优势节点 */
+.molecule-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 470px;
+  padding: 36px 28px 30px;
+  text-align: center;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: 18px;
   box-shadow: var(--shadow);
   transition:
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
 }
 
-.strength-card:hover {
+.molecule-node:hover {
   transform: translateY(-6px);
+  border-color: var(--brand);
   box-shadow: var(--shadow-hover);
 }
 
-.strength-index {
-  display: block;
-  margin-bottom: 14px;
-  color: var(--brand);
-  font-size: 1.8rem;
-  font-weight: 700;
-  opacity: 0.5;
-  letter-spacing: -0.02em;
+.molecule-node.node-1 {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
 }
 
-.strength-card h3 {
+.molecule-node.node-2 {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
+}
+
+.molecule-node.node-3 {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+}
+
+.molecule-node.node-4 {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: start;
+}
+
+.molecule-atom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 22px;
+  color: var(--brand-dark);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: radial-gradient(circle at 32% 30%, #ffffff 0%, var(--brand-soft) 100%);
+  border: 2px solid var(--brand);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+.molecule-orbit {
+  position: absolute;
+  inset: -12px;
+  border: 1px dashed var(--brand);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+/* Orbiting electron */
+.molecule-atom::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle 4px at 50% 0%, var(--brand) 99%, transparent 100%);
+  animation: orbit-spin 9s linear infinite;
+}
+
+.molecule-node:hover .molecule-atom::after {
+  animation-duration: 2.5s;
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.molecule-node h3 {
   margin: 0 0 12px;
   color: var(--text);
   font-size: 1.1rem;
 }
 
-.strength-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--brand);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.strength-card:hover::after {
-  transform: scaleX(1);
-}
-
-/* Dark section strength cards */
-.section-dark .strength-card {
-  background: var(--dark-surface);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.section-dark .strength-card h3 {
-  color: #fff;
-}
-
-.section-dark .strength-card p {
-  color: rgba(255, 255, 255, 0.65);
-}
-
-/* ---------- Gallery Carousel ---------- */
-.gallery-carousel {
-  position: relative;
-  max-width: none;
+.molecule-node p {
   margin: 0;
+  font-size: 0.95rem;
+  text-align: left;
 }
 
-.gallery-track {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 0;
-  border-radius: var(--radius-lg);
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.gallery-track::-webkit-scrollbar {
-  display: none;
-}
-
-.gallery-slide {
+/* ---------- Factory Gallery ---------- */
+.gallery {
   position: relative;
-  flex: 0 0 100%;
-  margin: 0;
+}
+
+.gallery-stage {
+  position: relative;
   overflow: hidden;
   aspect-ratio: 21 / 9;
-  scroll-snap-align: start;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
   background: linear-gradient(
     90deg,
     var(--surface-muted) 25%,
@@ -206,7 +489,6 @@
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
-  border-radius: var(--radius-lg);
 }
 
 @keyframes shimmer {
@@ -218,41 +500,177 @@
   }
 }
 
+.gallery-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.gallery-slide.active {
+  opacity: 1;
+}
+
 .gallery-image {
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.gallery-slide:hover .gallery-image {
-  transform: scale(1.04);
+/* Slow Ken Burns zoom on the active slide */
+.gallery-slide.active .gallery-image {
+  animation: gallery-zoom 7s ease-out both;
 }
 
-.gallery-dots {
-  display: flex;
+@keyframes gallery-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.gallery-counter {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  z-index: 2;
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+  padding: 7px 14px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  background: rgba(15, 23, 32, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+}
+
+.gallery-counter em {
+  font-style: normal;
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.gallery-dot {
-  width: 12px;
-  height: 12px;
+  width: 46px;
+  height: 46px;
   padding: 0;
-  border: 2px solid var(--brand);
+  color: #fff;
+  background: rgba(15, 23, 32, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 50%;
-  background: transparent;
+  backdrop-filter: blur(8px);
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(-50%);
   transition:
+    opacity 0.25s ease,
     background 0.2s ease,
-    transform 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.25s ease;
 }
 
-.gallery-dot:hover {
-  transform: scale(1.3);
+.gallery-arrow.prev {
+  left: 20px;
 }
 
-.gallery-dot.active {
+.gallery-arrow.next {
+  right: 20px;
+}
+
+.gallery:hover .gallery-arrow,
+.gallery-arrow:focus-visible {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .gallery-arrow {
+    opacity: 1;
+  }
+}
+
+.gallery-arrow:hover {
   background: var(--brand);
+  border-color: var(--brand);
+}
+
+.gallery-arrow:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 18px;
+  padding: 4px;
+  overflow-x: auto;
+}
+
+.gallery-thumb {
+  position: relative;
+  flex: 0 0 auto;
+  width: 96px;
+  height: 60px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--surface-muted);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition:
+    opacity 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.gallery-thumb img {
+  object-fit: cover;
+}
+
+.gallery-thumb:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.gallery-thumb.active {
+  opacity: 1;
+  border-color: var(--brand);
+  box-shadow: 0 4px 14px rgba(var(--shadow-tint), 0.14);
+}
+
+/* Autoplay progress on active thumbnail; duration matches AUTOPLAY_MS */
+.gallery-thumb-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 3px;
+  background: var(--brand);
+  transform-origin: left;
+  animation: thumb-progress 5s linear both;
+}
+
+@keyframes thumb-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* ---------- Contact Info ---------- */
@@ -521,4 +939,24 @@ a.contact-info-value:hover {
 .breadcrumb-item [aria-current='page'] {
   color: #fff;
   font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .molecule-atom::after,
+  .molecule-core-ring,
+  .molecule-bond::after,
+  .product-category::before,
+  .gallery-slide.active .gallery-image,
+  .gallery-thumb-progress,
+  .gallery-stage {
+    animation: none;
+  }
+
+  .gallery-slide {
+    transition: none;
+  }
+
+  .product-card-link::after {
+    display: none;
+  }
 }
