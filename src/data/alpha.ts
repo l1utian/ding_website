@@ -5,7 +5,7 @@ export const alphaSite: CompanySite = {
   key: 'alpha',
   name: '阿尔法（深圳）环保新材料有限公司',
   shortName: '阿尔法新材料',
-  slogan: '专一单品，绿色赋能橡塑产业',
+  slogan: '卓越品质，绿色赋能橡塑产业',
   logo: '/assets/alpha/logo.png',
   heroImage: '/assets/alpha/hero.png',
   introDocument: wordDocuments.alphaCompanyIntro,
@@ -33,18 +33,17 @@ export const alphaSite: CompanySite = {
   ],
   intro: [
     '阿尔法（深圳）环保新材料有限公司扎根深圳，是专注 PVC 制品配套环保功能性助剂研发、生产与技术服务的高新技术新材料企业，以 PVC 专用环保助剂为核心主营产品，聚焦单一功能性助剂材料赛道，为各类 PVC 制品制造企业提供高纯度、高适配、合规环保的原料解决方案。',
-    '成立至今，阿尔法始终坚持 “专一单品、绿色赋能橡塑产业” 的经营理念，聚焦 PVC 环保单一助剂细分赛道持续深耕，以纯粹、稳定、高性能的助剂单品为核心竞争力，持续研发低碳、低 VOC、高适配的新型环保助剂材料。未来公司将持续深耕单一功能助剂技术创新，打造 PVC 行业高可靠性专用助剂材料供应商，携手上下游共同构建安全、低碳、可持续的高分子新材料产业生态。',
+    '成立至今，阿尔法始终坚持 “卓越品质、绿色赋能橡塑产业” 的经营理念，聚焦 PVC 环保单一助剂细分赛道持续深耕，以纯粹、稳定、高性能的助剂单品为核心竞争力，持续研发低碳、低 VOC、高适配的新型环保助剂材料。未来公司将持续深耕单一功能助剂技术创新，打造 PVC 行业高可靠性专用助剂材料供应商，携手上下游共同构建安全、低碳、可持续的高分子新材料产业生态。',
   ],
   address: '深圳市雷柏中城生命科学园第3分园 A栋504',
   contactName: '徐军',
   phone: '13609623668',
   factoryImages: [
-    '/assets/alpha/factory/1.jpg',
-    '/assets/alpha/factory/11.jpg',
-    '/assets/alpha/factory/12.jpg',
-    '/assets/alpha/factory/13.jpg',
-    '/assets/alpha/factory/14.jpg',
-    '/assets/alpha/factory/15.jpg',
+    '/assets/shared/factory/1.png',
+    '/assets/shared/factory/11.png',
+    '/assets/shared/factory/12.png',
+    '/assets/shared/factory/13.png',
+    '/assets/shared/factory/14.jpg',
   ],
   products: [
     {

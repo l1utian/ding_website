@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs'
+import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import {
@@ -8,6 +10,14 @@ import {
   getStaticProductSlugs,
   sites,
 } from './sites'
+
+const SHARED_FACTORY_IMAGES = [
+  '/assets/shared/factory/1.png',
+  '/assets/shared/factory/11.png',
+  '/assets/shared/factory/12.png',
+  '/assets/shared/factory/13.png',
+  '/assets/shared/factory/14.jpg',
+] as const
 
 describe('site data', () => {
   it('selects a site only from an explicit SITE_KEY', () => {
@@ -35,6 +45,24 @@ describe('site data', () => {
       expect(new Set(slugs).size).toBe(slugs.length)
       expect(slugs.every((slug) => /^[a-z0-9-]+$/.test(slug))).toBe(true)
     }
+  })
+
+  it('uses the updated shared factory images in both site builds', () => {
+    for (const site of sites) {
+      expect(site.factoryImages).toEqual(SHARED_FACTORY_IMAGES)
+    }
+
+    for (const imagePath of SHARED_FACTORY_IMAGES) {
+      const publicFile = path.join(process.cwd(), 'public', imagePath.slice(1))
+      expect(existsSync(publicFile), `${imagePath} should exist`).toBe(true)
+    }
+  })
+
+  it('keeps the alpha slogan consistent with its company introduction', () => {
+    const alpha = getSite('alpha')
+
+    expect(alpha.slogan).toBe('卓越品质，绿色赋能橡塑产业')
+    expect(alpha.intro.join('\n')).toContain('“卓越品质、绿色赋能橡塑产业”')
   })
 
   it('uses the exact Word company introduction text as page content', () => {

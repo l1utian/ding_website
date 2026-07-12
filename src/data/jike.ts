@@ -40,12 +40,11 @@ export const jikeSite: CompanySite = {
   contactName: '丁丁',
   phone: '13155217718',
   factoryImages: [
-    '/assets/jike/factory/1.jpg',
-    '/assets/jike/factory/11.jpg',
-    '/assets/jike/factory/12.jpg',
-    '/assets/jike/factory/13.jpg',
-    '/assets/jike/factory/14.jpg',
-    '/assets/jike/factory/15.jpg',
+    '/assets/shared/factory/1.png',
+    '/assets/shared/factory/11.png',
+    '/assets/shared/factory/12.png',
+    '/assets/shared/factory/13.png',
+    '/assets/shared/factory/14.jpg',
   ],
   products: [
     {
