@@ -67,6 +67,14 @@ SOURCES = (
         "alphaAef32",
         ROOT / "source-materials" / "alpha" / "产品列表" / "AEF-32硬脂酸根插层镁铝水滑石.docx",
     ),
+    DocumentSource(
+        "alphaF37",
+        ROOT / "source-materials" / "alpha" / "产品列表" / "F-37 高效复合离型润滑脱模助剂TDS.docx",
+    ),
+    DocumentSource(
+        "alphaZincBenzoate",
+        ROOT / "source-materials" / "alpha" / "产品列表" / "苯甲酸锌说明书.docx",
+    ),
 )
 
 

@@ -32,10 +32,14 @@ describe('site data', () => {
 
   it('keeps the two company product catalogs isolated', () => {
     expect(getSite('jike').products).toHaveLength(3)
-    expect(getSite('alpha').products).toHaveLength(7)
+    expect(getSite('alpha').products).toHaveLength(9)
     expect(getProductBySlug(getSite('jike'), 'jk-100')).toBeDefined()
     expect(getProductBySlug(getSite('jike'), 'aef-18')).toBeUndefined()
+    expect(getProductBySlug(getSite('jike'), 'f-37')).toBeUndefined()
+    expect(getProductBySlug(getSite('jike'), 'zinc-benzoate')).toBeUndefined()
     expect(getProductBySlug(getSite('alpha'), 'aef-18')).toBeDefined()
+    expect(getProductBySlug(getSite('alpha'), 'f-37')).toBeDefined()
+    expect(getProductBySlug(getSite('alpha'), 'zinc-benzoate')).toBeDefined()
     expect(getProductBySlug(getSite('alpha'), 'jk-100')).toBeUndefined()
   })
 
@@ -78,12 +82,20 @@ describe('site data', () => {
   it('uses Word product documents for product detail content', () => {
     const jk100 = getProductBySlug(getSite('jike'), 'jk-100')
     const aft180 = getProductBySlug(getSite('alpha'), 'aft-180')
+    const f37 = getProductBySlug(getSite('alpha'), 'f-37')
+    const zincBenzoate = getProductBySlug(getSite('alpha'), 'zinc-benzoate')
 
     expect(jk100).toBeDefined()
     expect(aft180).toBeDefined()
+    expect(f37).toBeDefined()
+    expect(zincBenzoate).toBeDefined()
     expect(getDocumentPlainText(jk100!.document)).toContain('JK-100 环保热稳定剂产品说明书')
     expect(getDocumentPlainText(jk100!.document)).toContain('文档版本：V1.0生效日期：2026 年 07 月 02 日')
     expect(getDocumentPlainText(aft180!.document)).toContain('粉体防团聚剂 AFT-180')
     expect(getDocumentPlainText(aft180!.document)).toContain('•   包装：内塑外编袋包装，净重 25kg。可将小包装于吨包内875KG/包。')
+    expect(getDocumentPlainText(f37!.document)).toContain('F-37 高效复合离型润滑脱模助剂TDS')
+    expect(getDocumentPlainText(f37!.document)).toContain('文件版本：V1.0     编制日期：2026-07-11')
+    expect(getDocumentPlainText(zincBenzoate!.document)).toContain('苯甲酸锌说明书')
+    expect(getDocumentPlainText(zincBenzoate!.document)).toContain('CAS号：553-72-0')
   })
 })
