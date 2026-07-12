@@ -1,4 +1,5 @@
 import type { CompanySite } from './types'
+import { sharedFactoryImages } from './factory-images'
 import { wordDocuments } from './generated-documents'
 
 export const jikeSite: CompanySite = {
@@ -39,13 +40,7 @@ export const jikeSite: CompanySite = {
   address: '深圳市坪山区坪山街道六联社区福安西一巷',
   contactName: '丁丁',
   phone: '13155217718',
-  factoryImages: [
-    '/assets/shared/factory/1.png',
-    '/assets/shared/factory/11.png',
-    '/assets/shared/factory/12.png',
-    '/assets/shared/factory/13.png',
-    '/assets/shared/factory/14.jpg',
-  ],
+  factoryImages: sharedFactoryImages,
   products: [
     {
       slug: 'jk-100',

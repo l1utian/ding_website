@@ -519,12 +519,39 @@
   opacity: 1;
 }
 
+.gallery-image,
+.gallery-image-backdrop {
+  pointer-events: none;
+}
+
 .gallery-image {
+  z-index: 2;
   object-fit: cover;
 }
 
+.gallery-image-backdrop {
+  z-index: 0;
+  object-fit: cover;
+  filter: blur(24px) saturate(0.75);
+  opacity: 0.46;
+  transform: scale(1.08);
+}
+
+.gallery-slide-contain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(15, 23, 32, 0.2);
+  pointer-events: none;
+}
+
+.gallery-slide-contain .gallery-image {
+  object-fit: contain;
+}
+
 /* Slow Ken Burns zoom on the active slide */
-.gallery-slide.active .gallery-image {
+.gallery-slide-cover.active .gallery-image {
   animation: gallery-zoom 7s ease-out both;
 }
 
@@ -541,7 +568,7 @@
   position: absolute;
   right: 20px;
   bottom: 16px;
-  z-index: 2;
+  z-index: 3;
   display: inline-flex;
   gap: 6px;
   align-items: baseline;
@@ -566,7 +593,7 @@
 .gallery-arrow {
   position: absolute;
   top: 50%;
-  z-index: 2;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -645,6 +672,10 @@
 
 .gallery-thumb img {
   object-fit: cover;
+}
+
+.gallery-thumb-contain img {
+  object-fit: contain;
 }
 
 .gallery-thumb:hover {

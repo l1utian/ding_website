@@ -29,6 +29,11 @@ export type Product = Readonly<{
   packaging?: string
 }>
 
+export type FactoryImage = Readonly<{
+  src: string
+  fit: 'cover' | 'contain'
+}>
+
 export type CompanySite = Readonly<{
   key: SiteKey
   name: string
@@ -43,7 +48,7 @@ export type CompanySite = Readonly<{
   contactName: string
   phone: string
   products: NonEmptyReadonlyArray<Product>
-  factoryImages: NonEmptyReadonlyArray<string>
+  factoryImages: NonEmptyReadonlyArray<FactoryImage>
 }>
 
 export type SiteStrength = Readonly<{

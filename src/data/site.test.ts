@@ -12,11 +12,11 @@ import {
 } from './sites'
 
 const SHARED_FACTORY_IMAGES = [
-  '/assets/shared/factory/1.png',
-  '/assets/shared/factory/11.png',
-  '/assets/shared/factory/12.png',
-  '/assets/shared/factory/13.png',
-  '/assets/shared/factory/14.jpg',
+  { src: '/assets/shared/factory/1.png', fit: 'cover' },
+  { src: '/assets/shared/factory/11.png', fit: 'cover' },
+  { src: '/assets/shared/factory/12.png', fit: 'contain' },
+  { src: '/assets/shared/factory/13.png', fit: 'contain' },
+  { src: '/assets/shared/factory/14.jpg', fit: 'cover' },
 ] as const
 
 describe('site data', () => {
@@ -56,9 +56,9 @@ describe('site data', () => {
       expect(site.factoryImages).toEqual(SHARED_FACTORY_IMAGES)
     }
 
-    for (const imagePath of SHARED_FACTORY_IMAGES) {
-      const publicFile = path.join(process.cwd(), 'public', imagePath.slice(1))
-      expect(existsSync(publicFile), `${imagePath} should exist`).toBe(true)
+    for (const image of SHARED_FACTORY_IMAGES) {
+      const publicFile = path.join(process.cwd(), 'public', image.src.slice(1))
+      expect(existsSync(publicFile), `${image.src} should exist`).toBe(true)
     }
   })
 

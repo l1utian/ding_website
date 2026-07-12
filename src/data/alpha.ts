@@ -1,4 +1,5 @@
 import type { CompanySite } from './types'
+import { sharedFactoryImages } from './factory-images'
 import { wordDocuments } from './generated-documents'
 
 export const alphaSite: CompanySite = {
@@ -38,13 +39,7 @@ export const alphaSite: CompanySite = {
   address: '深圳市雷柏中城生命科学园第3分园 A栋504',
   contactName: '徐军',
   phone: '13609623668',
-  factoryImages: [
-    '/assets/shared/factory/1.png',
-    '/assets/shared/factory/11.png',
-    '/assets/shared/factory/12.png',
-    '/assets/shared/factory/13.png',
-    '/assets/shared/factory/14.jpg',
-  ],
+  factoryImages: sharedFactoryImages,
   products: [
     {
       slug: 'dh-273',
