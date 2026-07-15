@@ -8,21 +8,23 @@ import { Reveal } from '@/components/Reveal'
 import { SectionTitle } from '@/components/SectionTitle'
 import { StrengthsMolecule } from '@/components/StrengthsMolecule'
 import { getBuildSite } from '@/data/sites'
+import { getMessages } from '@/i18n/messages'
 
-export default function HomePage() {
-  const site = getBuildSite()
+export default function EnHomePage() {
+  const site = getBuildSite('en')
+  const messages = getMessages('en')
 
   return (
     <>
-      <Hero site={site} />
+      <Hero site={site} messages={messages} />
 
       <section className="section section-decorated" id="about">
         <div className="deco-molecules" aria-hidden="true" />
         <Reveal>
           <SectionTitle
-            eyebrow="About Us"
-            title="公司简介"
-            summary="聚焦环保助剂与高分子新材料应用，服务 PVC、CPVC 及相关橡塑产业。"
+            eyebrow={messages.sections.about.eyebrow}
+            title={messages.sections.about.title}
+            summary={messages.sections.about.summary}
           />
         </Reveal>
         <CompanyIntro site={site} />
@@ -32,9 +34,9 @@ export default function HomePage() {
         <div className="deco-gears" aria-hidden="true" />
         <Reveal>
           <SectionTitle
-            eyebrow="Core Strengths"
-            title="核心优势"
-            summary="以自有工厂和独立研发实验室为依托，服务橡塑新材料产业。"
+            eyebrow={messages.sections.strengths.eyebrow}
+            title={messages.sections.strengths.title}
+            summary={messages.sections.strengths.summary}
           />
         </Reveal>
         <StrengthsMolecule site={site} />
@@ -44,42 +46,42 @@ export default function HomePage() {
         <div className="deco-hexagons" aria-hidden="true" />
         <Reveal>
           <SectionTitle
-            eyebrow="Products"
-            title="产品中心"
-            summary="点击任意产品查看与原始资料一致的详细说明。"
+            eyebrow={messages.sections.products.eyebrow}
+            title={messages.sections.products.title}
+            summary={messages.sections.products.summary}
           />
         </Reveal>
-        <ProductGrid products={site.products} />
+        <ProductGrid products={site.products} locale="en" messages={messages} />
       </section>
 
       <section className="section band" id="factory">
         <Reveal>
           <SectionTitle
-            eyebrow="Production Base"
-            title="生产基地"
-            summary="标准化自动化生产车间与独立研发实验室，保障产品品质稳定。"
+            eyebrow={messages.sections.factory.eyebrow}
+            title={messages.sections.factory.title}
+            summary={messages.sections.factory.summary}
           />
         </Reveal>
         <Reveal delay={80}>
-          <FactoryGallery site={site} />
+          <FactoryGallery site={site} messages={messages} />
         </Reveal>
       </section>
 
-      <CtaBand site={site} />
+      <CtaBand site={site} messages={messages} />
 
       <section className="section section-decorated" id="contact">
         <div className="deco-flow" aria-hidden="true" />
         <Reveal>
           <SectionTitle
-            eyebrow="Contact Us"
-            title="联系我们"
+            eyebrow={messages.sections.contact.eyebrow}
+            title={messages.sections.contact.title}
           />
         </Reveal>
         <Reveal delay={80}>
-          <ContactPanel site={site} />
+          <ContactPanel site={site} messages={messages} />
         </Reveal>
         <Reveal delay={120}>
-          <p className="contact-note">欢迎咨询产品选型、定制配方与样品测试。</p>
+          <p className="contact-note">{messages.contact.note}</p>
         </Reveal>
       </section>
     </>

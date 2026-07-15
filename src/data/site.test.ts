@@ -122,4 +122,25 @@ describe('site data', () => {
     expect(getDocumentPlainText(zincBenzoate!.document)).toContain('苯甲酸锌说明书')
     expect(getDocumentPlainText(zincBenzoate!.document)).toContain('CAS号：553-72-0')
   })
+
+  it('mirrors product catalogs across zh and en locales', () => {
+    for (const key of ['jike', 'alpha'] as const) {
+      const zh = getSite(key, 'zh')
+      const en = getSite(key, 'en')
+      expect(en.products).toHaveLength(zh.products.length)
+      expect(getStaticProductSlugs(en)).toEqual(getStaticProductSlugs(zh))
+    }
+  })
+
+  it('provides English product documents for both sites', () => {
+    const jk100 = getProductBySlug(getSite('jike', 'en'), 'jk-100')
+    const aos508 = getProductBySlug(getSite('jike', 'en'), 'aos-508')
+    const f37 = getProductBySlug(getSite('alpha', 'en'), 'f-37')
+    const zinc = getProductBySlug(getSite('alpha', 'en'), 'zinc-benzoate')
+
+    expect(getDocumentPlainText(jk100!.document)).toContain('JK-100 Eco-Friendly Heat Stabilizer')
+    expect(getDocumentPlainText(aos508!.document)).toContain('AOS-508 Organic Eco Stabilizer for Calendering')
+    expect(getDocumentPlainText(f37!.document)).toContain('F-37 High-Efficiency Composite Release')
+    expect(getDocumentPlainText(zinc!.document)).toContain('CAS: 553-72-0')
+  })
 })

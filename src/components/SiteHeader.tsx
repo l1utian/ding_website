@@ -1,15 +1,30 @@
 import Image from 'next/image'
 
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import type { CompanySite } from '@/data/types'
+import type { Locale } from '@/i18n/locales'
+import { localePath } from '@/i18n/locales'
+import type { Messages } from '@/i18n/messages'
 
 type SiteHeaderProps = Readonly<{
   site: CompanySite
+  locale: Locale
+  messages: Messages
 }>
 
-export function SiteHeader({ site }: SiteHeaderProps) {
+export function SiteHeader({ site, locale, messages }: SiteHeaderProps) {
+  const home = localePath(locale, '/')
+  const nav = [
+    { href: `${home}#about`, label: messages.nav.about },
+    { href: `${home}#strengths`, label: messages.nav.strengths },
+    { href: `${home}#products`, label: messages.nav.products },
+    { href: `${home}#factory`, label: messages.nav.factory },
+    { href: `${home}#contact`, label: messages.nav.contact },
+  ] as const
+
   return (
     <header className="site-header">
-      <a className="brand" href="/" aria-label={`${site.name}首页`}>
+      <a className="brand" href={home} aria-label={`${site.name}${messages.brandHomeAria}`}>
         <Image
           className="brand-logo"
           src={site.logo}
@@ -20,13 +35,16 @@ export function SiteHeader({ site }: SiteHeaderProps) {
         />
         <span className="brand-name">{site.shortName}</span>
       </a>
-      <nav className="site-nav" aria-label="主导航">
-        <a className="nav-link" href="#about">关于我们</a>
-        <a className="nav-link" href="#strengths">核心优势</a>
-        <a className="nav-link" href="#products">产品中心</a>
-        <a className="nav-link" href="#factory">生产基地</a>
-        <a className="nav-link" href="#contact">联系我们</a>
-      </nav>
+      <div className="header-actions">
+        <nav className="site-nav" aria-label={messages.nav.aria}>
+          {nav.map((item) => (
+            <a className="nav-link" href={item.href} key={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <LanguageSwitcher locale={locale} messages={messages} />
+      </div>
     </header>
   )
 }

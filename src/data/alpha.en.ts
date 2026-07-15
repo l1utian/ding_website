@@ -1,0 +1,285 @@
+import type { CompanySite } from './types'
+import { sharedFactoryImages } from './factory-images'
+import { wordDocumentsEn as wordDocuments } from './generated-documents-en'
+
+export const alphaSiteEn: CompanySite = {
+  key: 'alpha',
+  name: 'Alpha (Shenzhen) Eco New Materials Co., Ltd.',
+  shortName: 'Alpha Materials',
+  slogan: 'Excellence in quality, greening the rubber & plastics industry',
+  logo: '/assets/alpha/logo.png',
+  heroImage: '/assets/alpha/hero.png',
+  introDocument: wordDocuments.alphaCompanyIntro,
+  strengths: [
+    {
+      title: 'Focused single-function additives',
+      description:
+        'Core business in eco PVC specialty additives—high-purity, well-matched single-function solutions.',
+    },
+    {
+      title: 'High-tech new materials company',
+      description:
+        'R&D, production and technical service of eco functional additives for PVC, with low-carbon, low-VOC innovation.',
+    },
+    {
+      title: 'Pure, stable, high performance',
+      description:
+        'Single-product excellence supplies compliant eco raw materials for PVC manufacturers.',
+    },
+    {
+      title: 'Building a sustainable ecosystem',
+      description:
+        'A reliable specialty additive partner co-building a safe, low-carbon polymer materials value chain.',
+    },
+  ],
+  intro: [
+    'Alpha (Shenzhen) Eco New Materials Co., Ltd. is a high-tech materials company in Shenzhen focused on R&D, production and technical service of eco functional additives for PVC. Our core portfolio is single-function PVC eco additives that deliver high purity, strong match and regulatory compliance for PVC manufacturers.',
+    'Since founding, Alpha has upheld “Excellence in quality, greening the rubber & plastics industry,” deepening the PVC eco mono-additive niche with pure, stable, high-performance specialties and continuous low-carbon, low-VOC development. We aim to be a highly reliable specialty additive supplier and co-build a safe, low-carbon polymer materials ecosystem.',
+  ],
+  address: 'Room 504, Building A, Zone 3, Rapoo Zhongcheng Life Science Park, Shenzhen',
+  contactName: 'Xu Jun',
+  phone: '13609623668',
+  email: 'zest168@126.com',
+  factoryImages: sharedFactoryImages,
+  products: [
+    {
+      slug: 'dh-273',
+      name: 'DH-273 Zinc-Burn Inhibitor',
+      category: 'Zinc-burn inhibitor',
+      summary:
+        'Polyol ester compound used as an auxiliary to suppress zinc burn in PVC heat stabilizers.',
+      document: wordDocuments.alphaDh273,
+      features: [
+        'Efficiently chelates zinc ions and blocks catalytic degradation.',
+        'Improves plasticization and early whiteness.',
+        'Extends mid/late heat stability of Ca-Zn systems.',
+        'Suited to high-end transparent/translucent PVC.',
+      ],
+      specs: [
+        { label: 'Appearance', value: 'Slightly yellow powder' },
+        { label: 'Odor', value: 'None' },
+        { label: 'Specific gravity', value: '1.35 g/l' },
+        { label: 'Acid value', value: '≤2 mg KOH/g' },
+        { label: 'Melting point', value: '150–170℃' },
+        { label: 'Heating loss', value: '≤2%' },
+        { label: 'Suggested dosage', value: '5–10%' },
+      ],
+      applications: ['Flexible/rigid PVC powder Ca-Zn and Ba-Zn formulas', 'Packaging film, sheet, medical'],
+      packaging: '25 kg/pack.',
+    },
+    {
+      slug: 'aef-18',
+      name: 'PVC Processing Stabilizer Additive AEF-18',
+      category: 'PVC processing stabilizer',
+      summary:
+        'Calcium organic framework coordination polymer for dispersion, viscosity reduction, stabilization and lubrication.',
+      document: wordDocuments.alphaAef18,
+      features: [
+        'Excellent early whiteness in Ca-Zn stabilizers.',
+        'Good dispersion; lowers viscosity and improves melt flow.',
+        'Does not impair PVC foaming.',
+        'Reduces residual stress and improves dimensional stability.',
+        'Non-migrating, non-blooming.',
+      ],
+      specs: [
+        { label: 'Calcium content', value: '20%±0.5' },
+        { label: 'Appearance', value: 'White fine powder' },
+        { label: 'Decomposition temperature', value: '>500℃' },
+        { label: 'Particle size D50', value: '3–5 μm' },
+        { label: 'Ash', value: '28.5±1.5%' },
+      ],
+      applications: ['PVC processing', 'SPC one-pack systems', 'Profile formulas', 'Flexible PVC such as cable'],
+      packaging: 'Composite bag, 25 kg net.',
+    },
+    {
+      slug: 'ccl-601',
+      name: 'Volume Resistivity Stabilizer CCL-601',
+      category: 'Resistivity stabilizer',
+      summary:
+        'Organic calcium salt that maintains water-immersion volume resistivity for PVC wire products.',
+      document: wordDocuments.alphaCcl601,
+      features: [
+        'Maintains water-immersion volume resistivity.',
+        'Decomposition above 500℃; excellent heat resistance.',
+        'Good PVC compatibility; non-migrating, non-blooming.',
+        'Improves flow and surface gloss of wire products.',
+      ],
+      specs: [
+        { label: 'Appearance', value: 'White fine powder' },
+        { label: 'Decomposition temperature', value: '>500℃' },
+        { label: 'Particle size D50', value: '3–5 μm' },
+        { label: 'Ash', value: '26±1.5%' },
+        { label: 'Suggested dosage', value: '0.5–1 phr' },
+      ],
+      applications: ['PVC wire products', 'Formulas needing stable water-immersion resistivity'],
+      packaging: 'Paper-plastic bag with PE liner, 25 kg.',
+    },
+    {
+      slug: 'aft-180',
+      name: 'Powder Anti-Agglomeration Agent AFT-180',
+      category: 'Anti-agglomeration agent',
+      summary:
+        'Polycarboxylate coordination-polymer powder additive for ultrafine uniform dispersion of pigments and fillers.',
+      document: wordDocuments.alphaAft180,
+      features: [
+        'Prevents hard agglomerates of pigments/fillers.',
+        'Lowers dispersion size for ultrafine uniformity.',
+        'Avoids Mooney rise and stress concentration from agglomeration.',
+        'Non-toxic, odorless, non-blooming; heat-resistant processing.',
+      ],
+      specs: [
+        { label: 'Appearance', value: 'White powder' },
+        { label: 'Heating loss', value: '≤1.5%' },
+        { label: 'Ignition loss', value: '>70%' },
+        { label: 'Fineness', value: '100% through 325 mesh' },
+        { label: 'Decomposition temperature', value: '≥517℃' },
+        {
+          label: 'Recommended dosage',
+          value: 'From 0.3% on powder weight; typical 1.0%±0.5%',
+        },
+      ],
+      applications: ['Powder-filled rubber and plastics', 'Pre-dispersed masterbatch'],
+      packaging: 'PE inner / woven outer, 25 kg; bulk option 875 kg.',
+    },
+    {
+      slug: 'theic',
+      name: 'THEIC',
+      category: 'Functional additive',
+      summary:
+        'Tris(2-hydroxyethyl) isocyanurate for PVC plastic stabilizers and heat-resistant enameled wire.',
+      document: wordDocuments.alphaTheic,
+      features: [],
+      specs: [
+        { label: 'Chemical name', value: 'Tris(2-hydroxyethyl) isocyanurate' },
+        { label: 'Molecular formula', value: 'C9H15N3O6' },
+        { label: 'Molecular weight', value: '261.24' },
+        { label: 'Appearance', value: 'White crystalline powder or granules' },
+        { label: 'Melting point', value: '133.5–137℃' },
+        { label: 'Hydroxyl value', value: '640±10 (mg KOH/g)' },
+        { label: 'Acid value', value: '≤1.0 (mg KOH/g)' },
+        { label: 'pH', value: '6.5–7.3' },
+        { label: 'Turbidity', value: '≤1.0 NTU' },
+        { label: 'Loss on drying', value: '≤0.3%' },
+      ],
+      applications: ['PVC plastic stabilizers', 'Heat-resistant enameled wire'],
+      packaging: '25 / 500 / 800 / 1000 kg, woven bags with PE liner.',
+    },
+    {
+      slug: 'aef-477',
+      name: 'High-Efficiency Co-Stabilizer AEF-477',
+      category: 'Co-stabilizer',
+      summary:
+        'High-efficiency co-stabilizer dedicated to Ca/Zn and organotin heat stabilizers.',
+      document: wordDocuments.alphaAef477,
+      features: [
+        'Suppresses zinc burn.',
+        'Improves long-term heat stability with Ca/Zn systems.',
+        'Improves heat stability with organotin systems.',
+        'Does not hurt Vicat; non-blooming.',
+      ],
+      specs: [
+        { label: 'Appearance', value: 'White powder' },
+        { label: 'Bulk density', value: '0.3 g/cc' },
+        { label: 'Alkalinity', value: '520–580 mg KOH/g' },
+        { label: 'Specific gravity', value: '1.1–1.2 g/cm³' },
+        { label: 'Recommended dosage', value: '0.1–0.6 phr' },
+        { label: 'Storage temperature', value: '15–30℃' },
+      ],
+      applications: ['Ca/Zn heat stabilizer systems', 'Organotin heat stabilizer systems'],
+      packaging: '25 kg/bag or bulk bag.',
+    },
+    {
+      slug: 'aef-32',
+      name: 'Stearate-Intercalated Mg-Al Hydrotalcite AEF-32',
+      category: 'Intercalated hydrotalcite',
+      summary:
+        'Stearate-intercalated Mg-Al LDH that scavenges HCl and suppresses zinc burn in rigid PVC lead-free Ca-Zn systems.',
+      document: wordDocuments.alphaAef32,
+      features: [
+        'Dual heat stabilization: stearate scavenges HCl and displaces labile allylic Cl; superior early whiteness.',
+        'With Ca-Zn, complexes ZnCl2 and extends long-term stability by 30–50%.',
+        'Excellent PVC compatibility; less agglomeration; internal lubrication lowers torque.',
+        'Free of Pb/Cd; RoHS and food-contact related standards.',
+        'Ionically fixed stearate; low high-temperature plate-out.',
+      ],
+      specs: [
+        { label: 'Appearance', value: 'White ultrafine uniform powder' },
+        { label: 'MgO, wt%', value: '34.0–37.0%' },
+        { label: 'Al2O3, wt%', value: '13.0–16.0%' },
+        { label: 'Interlayer stearate organic C', value: '18.0–23.0%' },
+        { label: 'Volatile moisture 105℃ 2h', value: '≤0.50%' },
+        { label: 'Total LOI 500℃', value: '42–48%' },
+        { label: '325-mesh wet residue', value: '≤0.01%' },
+      ],
+      applications: [
+        'Rigid PVC pipes, window profiles, rigid film/sheet',
+        'Lead-free Ca-Zn composite systems',
+        'Twin/single-screw extrusion, injection, calendering',
+      ],
+      packaging: '25 kg/bag, PE liner + woven outer sealed bag.',
+    },
+    {
+      slug: 'f-37',
+      name: 'F-37 High-Efficiency Composite Release Lubricant',
+      category: 'Release lubricant',
+      summary:
+        'Polymer-modified composite release lubricant for interfacial release and balanced melt lubrication in rigid PVC/CPVC.',
+      document: wordDocuments.alphaF37,
+      features: [
+        'Continuous lubricating film reduces sticking, stringing and die deposit.',
+        'Balances internal melt friction and plasticization uniformity.',
+        'Compatible with rigid PVC/CPVC stabilizers and fillers.',
+        'Low volatility and smoke at processing temperatures.',
+        'Fewer surface pits, scratches and uneven defects.',
+      ],
+      specs: [
+        { label: 'Appearance', value: 'Uniform white fine powder' },
+        { label: 'Melt/softening range', value: '110–125℃' },
+        { label: 'Acid value', value: '≤10.0 mg KOH/g' },
+        { label: 'Moisture', value: '≤0.3%' },
+        { label: 'High-temp volatile', value: '≤0.5% (150℃/1h)' },
+        { label: 'Heat resistance', value: '≥230℃' },
+        { label: 'Fineness (100 mesh)', value: '≥98%' },
+      ],
+      applications: [
+        'CPVC high-temp chemical fittings and hot/cold water pipes',
+        'UPVC drainage pipes and window profiles',
+        'Injection fittings, sheet and film',
+        'Extrusion, injection and calendering',
+      ],
+      packaging: '25 kg woven bag with PE liner.',
+    },
+    {
+      slug: 'zinc-benzoate',
+      name: 'Zinc Benzoate',
+      category: 'Functional zinc salt',
+      summary:
+        'White crystalline functional zinc salt for PVC heat stabilization, food preservation, coatings, textiles and personal care.',
+      document: wordDocuments.alphaZincBenzoate,
+      features: [
+        'White crystalline powder; odorless and tasteless.',
+        'Zinc content not less than 20.0%.',
+        'Improves heat and weather resistance of transparent/flexible PVC.',
+        'Useful for antimicrobial and zinc fortification applications.',
+        'Meets RoHS, REACH and related food-contact standards.',
+      ],
+      specs: [
+        { label: 'English name', value: 'Zinc Benzoate (Zinc Dibenzoate)' },
+        { label: 'Molecular formula', value: 'C14H10O4Zn' },
+        { label: 'Molecular weight', value: '307.64' },
+        { label: 'CAS', value: '553-72-0' },
+        { label: 'Appearance', value: 'White powder' },
+        { label: 'Particle size', value: '≥325 mesh' },
+        { label: 'Zinc content', value: '≥20.0%' },
+        { label: 'Volatile (105℃/2h)', value: '≤1.0%' },
+      ],
+      applications: [
+        'Food preservative, acidulant and zinc fortifier',
+        'PVC heat stabilizer',
+        'Paint biocide and textile auxiliaries',
+        'Pharma and cosmetics antimicrobial raw material',
+      ],
+      packaging: '25 kg kraft or woven bag with PE liner, moisture-proof sealed.',
+    },
+  ],
+}

@@ -1,5 +1,9 @@
 import { ChevronRight, Home } from 'lucide-react'
 
+import type { Locale } from '@/i18n/locales'
+import { localePath } from '@/i18n/locales'
+import type { Messages } from '@/i18n/messages'
+
 type BreadcrumbItem = Readonly<{
   label: string
   href?: string
@@ -7,13 +11,15 @@ type BreadcrumbItem = Readonly<{
 
 type BreadcrumbProps = Readonly<{
   items: readonly BreadcrumbItem[]
+  locale: Locale
+  messages: Messages
 }>
 
-export function Breadcrumb({ items }: BreadcrumbProps) {
+export function Breadcrumb({ items, locale, messages }: BreadcrumbProps) {
   return (
-    <nav className="breadcrumb" aria-label="面包屑导航">
-      <a className="breadcrumb-home" href="/">
-        <Home aria-hidden="true" size={15} /> 首页
+    <nav className="breadcrumb" aria-label={messages.breadcrumb.aria}>
+      <a className="breadcrumb-home" href={localePath(locale, '/')}>
+        <Home aria-hidden="true" size={15} /> {messages.breadcrumb.home}
       </a>
       {items.map((item) => (
         <span className="breadcrumb-item" key={item.label}>

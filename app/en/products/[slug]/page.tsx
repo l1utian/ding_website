@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { ProductDetailView } from '@/components/ProductDetailView'
 import { getBuildSite, getProductBySlug, getStaticProductSlugs } from '@/data/sites'
+import { localePath } from '@/i18n/locales'
+import { getMessages } from '@/i18n/messages'
 
 type ProductPageProps = Readonly<{
   params: Promise<{
@@ -14,30 +16,38 @@ type ProductPageProps = Readonly<{
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  const site = getBuildSite()
+  const site = getBuildSite('en')
 
   return getStaticProductSlugs(site).map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const site = getBuildSite()
+  const site = getBuildSite('en')
+  const messages = getMessages('en')
   const { slug } = await params
   const product = getProductBySlug(site, slug)
 
   if (!product) {
     return {
-      title: '产品不存在',
+      title: messages.products.notFound,
     }
   }
 
   return {
     title: product.name,
     description: product.summary,
+    alternates: {
+      languages: {
+        'zh-CN': localePath('zh', `/products/${slug}/`),
+        en: localePath('en', `/products/${slug}/`),
+      },
+    },
   }
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const site = getBuildSite()
+export default async function EnProductPage({ params }: ProductPageProps) {
+  const site = getBuildSite('en')
+  const messages = getMessages('en')
   const { slug } = await params
   const product = getProductBySlug(site, slug)
 
@@ -48,13 +58,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <>
       <section className="page-hero product-hero">
-        <Breadcrumb items={[{ label: '产品', href: '/#products' }, { label: product.name }]} />
+        <Breadcrumb
+          locale="en"
+          messages={messages}
+          items={[
+            { label: messages.products.breadcrumb, href: `${localePath('en', '/')}#products` },
+            { label: product.name },
+          ]}
+        />
         <p className="eyebrow">{product.category}</p>
         <h1>{product.name}</h1>
         <p className="page-hero-summary">{product.summary}</p>
       </section>
       <section className="section detail-section">
-        <ProductDetailView site={site} product={product} />
+        <ProductDetailView site={site} product={product} locale="en" messages={messages} />
       </section>
     </>
   )

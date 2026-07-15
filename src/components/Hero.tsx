@@ -2,41 +2,43 @@ import { Factory, Leaf, ShieldCheck } from 'lucide-react'
 
 import { Typewriter } from '@/components/Typewriter'
 import type { CompanySite } from '@/data/types'
+import type { Messages } from '@/i18n/messages'
 
 type HeroProps = Readonly<{
   site: CompanySite
+  messages: Messages
 }>
 
-export function Hero({ site }: HeroProps) {
+export function Hero({ site, messages }: HeroProps) {
   return (
     <section className="hero" style={{ backgroundImage: `url(${site.heroImage})` }}>
       <div className="hero-inner">
         <h1 className="hero-slogan">
           <Typewriter text={site.slogan} />
         </h1>
-        <div className="hero-points" aria-label="企业能力">
+        <div className="hero-points" aria-label={messages.hero.capabilitiesAria}>
           <span>
-            <Factory aria-hidden="true" size={18} /> 自有生产工厂
+            <Factory aria-hidden="true" size={18} /> {messages.hero.ownedFactory}
           </span>
           <span>
-            <ShieldCheck aria-hidden="true" size={18} /> 环保合规助剂
+            <ShieldCheck aria-hidden="true" size={18} /> {messages.hero.ecoAdditives}
           </span>
           <span>
-            <Leaf aria-hidden="true" size={18} /> 绿色低碳材料
+            <Leaf aria-hidden="true" size={18} /> {messages.hero.greenMaterials}
           </span>
         </div>
         <div className="hero-stats">
           <div className="hero-stat">
             <span className="hero-stat-number">10+</span>
-            <span className="hero-stat-label">年行业经验</span>
+            <span className="hero-stat-label">{messages.hero.yearsLabel}</span>
           </div>
           <div className="hero-stat">
             <span className="hero-stat-number">200+</span>
-            <span className="hero-stat-label">合作客户</span>
+            <span className="hero-stat-label">{messages.hero.clientsLabel}</span>
           </div>
           <div className="hero-stat">
             <span className="hero-stat-number">6000㎡</span>
-            <span className="hero-stat-label">生产基地</span>
+            <span className="hero-stat-label">{messages.hero.baseLabel}</span>
           </div>
         </div>
       </div>

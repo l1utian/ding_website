@@ -5,14 +5,16 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 import type { CompanySite } from '@/data/types'
+import type { Messages } from '@/i18n/messages'
 
 type FactoryGalleryProps = Readonly<{
   site: CompanySite
+  messages: Messages
 }>
 
 const AUTOPLAY_MS = 5000
 
-export function FactoryGallery({ site }: FactoryGalleryProps) {
+export function FactoryGallery({ site, messages }: FactoryGalleryProps) {
   const images = site.factoryImages
   const total = images.length
   const [active, setActive] = useState(0)
@@ -33,8 +35,8 @@ export function FactoryGallery({ site }: FactoryGalleryProps) {
   return (
     <div
       className="gallery"
-      aria-roledescription="轮播图"
-      aria-label={`${site.shortName}生产基地照片`}
+      aria-roledescription={messages.gallery.carousel}
+      aria-label={`${site.shortName} ${messages.gallery.photos}`}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -60,7 +62,7 @@ export function FactoryGallery({ site }: FactoryGalleryProps) {
             <Image
               className="gallery-image"
               src={image.src}
-              alt={`${site.shortName}工厂照片 ${index + 1}`}
+              alt={`${site.shortName} ${messages.gallery.photos} ${index + 1}`}
               fill
               sizes="(max-width: 860px) 100vw, 1400px"
               priority={index === 0}
@@ -73,24 +75,34 @@ export function FactoryGallery({ site }: FactoryGalleryProps) {
         </span>
         {total > 1 ? (
           <>
-            <button type="button" className="gallery-arrow prev" onClick={() => goTo(active - 1)} aria-label="上一张照片">
+            <button
+              type="button"
+              className="gallery-arrow prev"
+              onClick={() => goTo(active - 1)}
+              aria-label={messages.gallery.prev}
+            >
               <ChevronLeft aria-hidden="true" size={22} />
             </button>
-            <button type="button" className="gallery-arrow next" onClick={() => goTo(active + 1)} aria-label="下一张照片">
+            <button
+              type="button"
+              className="gallery-arrow next"
+              onClick={() => goTo(active + 1)}
+              aria-label={messages.gallery.next}
+            >
               <ChevronRight aria-hidden="true" size={22} />
             </button>
           </>
         ) : null}
       </div>
       {total > 1 ? (
-        <div className="gallery-thumbs" role="tablist" aria-label="选择照片">
+        <div className="gallery-thumbs" role="tablist" aria-label={messages.gallery.pick}>
           {images.map((image, index) => (
             <button
               type="button"
               key={image.src}
               role="tab"
               aria-selected={index === active}
-              aria-label={`查看第 ${index + 1} 张照片`}
+              aria-label={`${messages.gallery.pick} ${index + 1}`}
               className={`gallery-thumb gallery-thumb-${image.fit}${index === active ? ' active' : ''}`}
               onClick={() => goTo(index)}
             >

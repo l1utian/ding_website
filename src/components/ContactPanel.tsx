@@ -1,12 +1,14 @@
 import { Mail, MapPin, Phone, UserRound } from 'lucide-react'
 
 import type { CompanySite } from '@/data/types'
+import type { Messages } from '@/i18n/messages'
 
 type ContactPanelProps = Readonly<{
   site: CompanySite
+  messages: Messages
 }>
 
-export function ContactPanel({ site }: ContactPanelProps) {
+export function ContactPanel({ site, messages }: ContactPanelProps) {
   return (
     <div className="contact-info">
       <div className="contact-info-item">
@@ -14,7 +16,7 @@ export function ContactPanel({ site }: ContactPanelProps) {
           <MapPin size={22} />
         </span>
         <div className="contact-info-text">
-          <span className="contact-info-label">公司地址</span>
+          <span className="contact-info-label">{messages.contact.address}</span>
           <span className="contact-info-value">{site.address}</span>
         </div>
       </div>
@@ -23,7 +25,7 @@ export function ContactPanel({ site }: ContactPanelProps) {
           <UserRound size={22} />
         </span>
         <div className="contact-info-text">
-          <span className="contact-info-label">联系人</span>
+          <span className="contact-info-label">{messages.contact.person}</span>
           <span className="contact-info-value">{site.contactName}</span>
         </div>
       </div>
@@ -32,8 +34,10 @@ export function ContactPanel({ site }: ContactPanelProps) {
           <Phone size={22} />
         </span>
         <div className="contact-info-text">
-          <span className="contact-info-label">联系电话</span>
-          <a className="contact-info-value" href={`tel:${site.phone}`}>{site.phone}</a>
+          <span className="contact-info-label">{messages.contact.phone}</span>
+          <a className="contact-info-value" href={`tel:${site.phone}`}>
+            {site.phone}
+          </a>
         </div>
       </div>
       <div className="contact-info-item">
@@ -41,8 +45,10 @@ export function ContactPanel({ site }: ContactPanelProps) {
           <Mail size={22} />
         </span>
         <div className="contact-info-text">
-          <span className="contact-info-label">邮箱</span>
-          <a className="contact-info-value" href={`mailto:${site.email}`}>{site.email}</a>
+          <span className="contact-info-label">{messages.contact.email}</span>
+          <a className="contact-info-value" href={`mailto:${site.email}`}>
+            {site.email}
+          </a>
         </div>
       </div>
     </div>

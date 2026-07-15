@@ -82,6 +82,10 @@
     display: none;
   }
 
+  .header-actions {
+    margin-left: auto;
+  }
+
   .brand-name {
     font-size: 0.95rem;
   }

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 
-import { SiteFooter } from '@/components/SiteFooter'
-import { SiteHeader } from '@/components/SiteHeader'
 import { getBuildSite } from '@/data/sites'
+import { getMessages } from '@/i18n/messages'
 
 import './globals.css'
 
@@ -11,11 +10,12 @@ type RootLayoutProps = Readonly<{
 }>
 
 export function generateMetadata(): Metadata {
-  const site = getBuildSite()
+  const site = getBuildSite('zh')
+  const messages = getMessages('zh')
 
   return {
     title: {
-      default: `${site.name}｜环保助剂与新材料门户`,
+      default: `${site.name}｜${messages.metaPortalSuffix}`,
       template: `%s｜${site.shortName}`,
     },
     description: site.intro[0],
@@ -27,15 +27,11 @@ export function generateMetadata(): Metadata {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const site = getBuildSite()
+  const site = getBuildSite('zh')
 
   return (
     <html lang="zh-CN">
-      <body data-site={site.key}>
-        <SiteHeader site={site} />
-        <main>{children}</main>
-        <SiteFooter site={site} />
-      </body>
+      <body data-site={site.key}>{children}</body>
     </html>
   )
 }

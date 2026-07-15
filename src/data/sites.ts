@@ -1,9 +1,19 @@
 import { alphaSite } from './alpha'
+import { alphaSiteEn } from './alpha.en'
 import { jikeSite } from './jike'
+import { jikeSiteEn } from './jike.en'
 import type { CompanySite, DocumentBlock, SiteKey } from './types'
+import type { Locale } from '@/i18n/locales'
+import { DEFAULT_LOCALE } from '@/i18n/locales'
 
 const VALID_SITE_KEYS: readonly SiteKey[] = ['jike', 'alpha']
 
+const sitesByLocale: Record<Locale, Record<SiteKey, CompanySite>> = {
+  zh: { jike: jikeSite, alpha: alphaSite },
+  en: { jike: jikeSiteEn, alpha: alphaSiteEn },
+}
+
+/** All zh sites (backward-compatible for tests that iterate brands). */
 export const sites = [jikeSite, alphaSite] as const
 
 export function getBuildSiteKey(
@@ -18,8 +28,8 @@ export function getBuildSiteKey(
   throw new Error('SITE_KEY must be one of: jike, alpha')
 }
 
-export function getSite(siteKey: SiteKey): CompanySite {
-  const site = sites.find((item) => item.key === siteKey)
+export function getSite(siteKey: SiteKey, locale: Locale = DEFAULT_LOCALE): CompanySite {
+  const site = sitesByLocale[locale][siteKey]
 
   if (!site) {
     throw new Error(`Unknown site key: ${siteKey}`)
@@ -28,8 +38,8 @@ export function getSite(siteKey: SiteKey): CompanySite {
   return site
 }
 
-export function getBuildSite(): CompanySite {
-  return getSite(getBuildSiteKey(process.env))
+export function getBuildSite(locale: Locale = DEFAULT_LOCALE): CompanySite {
+  return getSite(getBuildSiteKey(process.env), locale)
 }
 
 export function getProductBySlug(site: CompanySite, slug: string) {

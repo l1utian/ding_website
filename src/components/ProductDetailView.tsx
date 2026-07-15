@@ -2,23 +2,28 @@ import { ArrowLeft, Mail, Package, Phone } from 'lucide-react'
 
 import { WordDocument } from '@/components/WordDocument'
 import type { CompanySite, Product } from '@/data/types'
+import type { Locale } from '@/i18n/locales'
+import { localePath } from '@/i18n/locales'
+import type { Messages } from '@/i18n/messages'
 
 type ProductDetailViewProps = Readonly<{
   site: CompanySite
   product: Product
+  locale: Locale
+  messages: Messages
 }>
 
-export function ProductDetailView({ site, product }: ProductDetailViewProps) {
+export function ProductDetailView({ site, product, locale, messages }: ProductDetailViewProps) {
   return (
     <div className="detail-layout">
       <article className="detail-main">
         <WordDocument blocks={product.document} />
         <div className="detail-actions">
           <a className="button primary" href="#contact-card">
-            咨询产品 <Phone aria-hidden="true" size={16} />
+            {messages.products.consult} <Phone aria-hidden="true" size={16} />
           </a>
-          <a className="button muted" href="/#products">
-            <ArrowLeft aria-hidden="true" size={16} /> 返回产品列表
+          <a className="button muted" href={`${localePath(locale, '/')}#products`}>
+            <ArrowLeft aria-hidden="true" size={16} /> {messages.products.backToList}
           </a>
         </div>
       </article>
@@ -26,7 +31,7 @@ export function ProductDetailView({ site, product }: ProductDetailViewProps) {
       <aside className="detail-aside">
         {product.specs.length > 0 ? (
           <div className="spec-panel">
-            <h3 className="aside-title">关键指标</h3>
+            <h3 className="aside-title">{messages.products.keySpecs}</h3>
             <dl>
               {product.specs.map((spec) => (
                 <div key={spec.label}>
@@ -40,7 +45,7 @@ export function ProductDetailView({ site, product }: ProductDetailViewProps) {
 
         {product.applications.length > 0 ? (
           <div className="spec-panel">
-            <h3 className="aside-title">应用领域</h3>
+            <h3 className="aside-title">{messages.products.applications}</h3>
             <ul className="check-list">
               {product.applications.map((application) => (
                 <li key={application}>{application}</li>
@@ -52,14 +57,14 @@ export function ProductDetailView({ site, product }: ProductDetailViewProps) {
         {product.packaging ? (
           <div className="spec-panel packaging">
             <h3 className="aside-title">
-              <Package aria-hidden="true" size={16} /> 包装规格
+              <Package aria-hidden="true" size={16} /> {messages.products.packaging}
             </h3>
             <p>{product.packaging}</p>
           </div>
         ) : null}
 
         <div className="spec-panel contact-card" id="contact-card">
-          <h3 className="aside-title">业务咨询</h3>
+          <h3 className="aside-title">{messages.products.business}</h3>
           <p className="contact-line">{site.contactName}</p>
           <a className="contact-phone" href={`tel:${site.phone}`}>
             <Phone aria-hidden="true" size={16} /> {site.phone}
