@@ -55,6 +55,15 @@ SOURCES = (
         / "SPC地板专用钙锌稳定剂JK-315TDS.docx",
     ),
     DocumentSource(
+        "jikeAos508",
+        ROOT
+        / "source-materials"
+        / "jike"
+        / "产品列表"
+        / "PVC热稳定稳定剂"
+        / "AOS-508压延有机环保稳定剂.docx",
+    ),
+    DocumentSource(
         "jikeAos10",
         ROOT / "source-materials" / "jike" / "产品列表" / "CPVC热稳定剂" / "AOS-10 有机稳定剂（CPVC专用）.docx",
     ),

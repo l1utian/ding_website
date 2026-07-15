@@ -154,6 +154,34 @@ export const jikeSite: CompanySite = {
       packaging: '25Kg/袋，PP 编织外袋衬 PE 内袋。',
     },
     {
+      slug: 'aos-508',
+      name: 'AOS-508 压延有机环保稳定剂',
+      category: 'PVC热稳定剂',
+      summary:
+        '硬质 PVC 压延膜专用复合型环保热稳定剂，极低 VOC、低气味，不含游离苯酚。',
+      document: wordDocuments.jikeAos508,
+      features: [
+        '纯有机复配高锌体系，适配硬质 PVC 压延加工。',
+        '极低 VOC、低气味，不含游离苯酚。',
+        '重金属含量极低，环保性能优异。',
+        '适配不透明硬质压延膜、卡基片材与地板印刷层。',
+      ],
+      specs: [
+        { label: '外观', value: '白色均匀粉末 / 颗粒' },
+        { label: '加热减量（105℃/2h）', value: '≤1.0%' },
+        { label: '细度', value: '99% 通过 120 目筛' },
+        { label: '重金属（铅、镉、汞、六价铬）', value: '均＜5ppm' },
+        { label: '推荐添加量', value: '3～3.5 phr' },
+        { label: '保质期', value: '自交货日期起 24 个月' },
+      ],
+      applications: [
+        '不透明硬质 PVC 压延膜',
+        '卡基片材、印刷膜',
+        'PVC 地板印刷层',
+      ],
+      packaging: '25kg / 编织袋，亦可提供吨袋包装。',
+    },
+    {
       slug: 'aos-10',
       name: 'AOS-10 有机稳定剂（CPVC专用）',
       category: 'CPVC热稳定剂',
