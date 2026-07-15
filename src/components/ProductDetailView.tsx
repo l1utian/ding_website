@@ -1,4 +1,4 @@
-import { ArrowLeft, Package, Phone } from 'lucide-react'
+import { ArrowLeft, Mail, Package, Phone } from 'lucide-react'
 
 import { WordDocument } from '@/components/WordDocument'
 import type { CompanySite, Product } from '@/data/types'
@@ -63,6 +63,9 @@ export function ProductDetailView({ site, product }: ProductDetailViewProps) {
           <p className="contact-line">{site.contactName}</p>
           <a className="contact-phone" href={`tel:${site.phone}`}>
             <Phone aria-hidden="true" size={16} /> {site.phone}
+          </a>
+          <a className="contact-phone" href={`mailto:${site.email}`}>
+            <Mail aria-hidden="true" size={16} /> {site.email}
           </a>
         </div>
       </aside>

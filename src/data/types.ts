@@ -47,6 +47,7 @@ export type CompanySite = Readonly<{
   address: string
   contactName: string
   phone: string
+  email: string
   products: NonEmptyReadonlyArray<Product>
   factoryImages: NonEmptyReadonlyArray<FactoryImage>
 }>

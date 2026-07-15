@@ -30,9 +30,12 @@ describe('site data', () => {
   })
 
   it('keeps the two company product catalogs isolated', () => {
-    expect(getSite('jike').products).toHaveLength(3)
+    expect(getSite('jike').products).toHaveLength(6)
     expect(getSite('alpha').products).toHaveLength(9)
     expect(getProductBySlug(getSite('jike'), 'jk-100')).toBeDefined()
+    expect(getProductBySlug(getSite('jike'), 'jk-619e')).toBeDefined()
+    expect(getProductBySlug(getSite('jike'), 'jk-318')).toBeDefined()
+    expect(getProductBySlug(getSite('jike'), 'jk-315')).toBeDefined()
     expect(getProductBySlug(getSite('jike'), 'aef-18')).toBeUndefined()
     expect(getProductBySlug(getSite('jike'), 'f-37')).toBeUndefined()
     expect(getProductBySlug(getSite('jike'), 'zinc-benzoate')).toBeUndefined()
@@ -40,6 +43,11 @@ describe('site data', () => {
     expect(getProductBySlug(getSite('alpha'), 'f-37')).toBeDefined()
     expect(getProductBySlug(getSite('alpha'), 'zinc-benzoate')).toBeDefined()
     expect(getProductBySlug(getSite('alpha'), 'jk-100')).toBeUndefined()
+  })
+
+  it('exposes contact emails for both sites', () => {
+    expect(getSite('jike').email).toBe('13155217718dd@gmail.com')
+    expect(getSite('alpha').email).toBe('zest168@126.com')
   })
 
   it('provides unique static product routes for each site', () => {
@@ -80,16 +88,28 @@ describe('site data', () => {
 
   it('uses Word product documents for product detail content', () => {
     const jk100 = getProductBySlug(getSite('jike'), 'jk-100')
+    const jk619e = getProductBySlug(getSite('jike'), 'jk-619e')
+    const jk318 = getProductBySlug(getSite('jike'), 'jk-318')
+    const jk315 = getProductBySlug(getSite('jike'), 'jk-315')
     const aft180 = getProductBySlug(getSite('alpha'), 'aft-180')
     const f37 = getProductBySlug(getSite('alpha'), 'f-37')
     const zincBenzoate = getProductBySlug(getSite('alpha'), 'zinc-benzoate')
 
     expect(jk100).toBeDefined()
+    expect(jk619e).toBeDefined()
+    expect(jk318).toBeDefined()
+    expect(jk315).toBeDefined()
     expect(aft180).toBeDefined()
     expect(f37).toBeDefined()
     expect(zincBenzoate).toBeDefined()
     expect(getDocumentPlainText(jk100!.document)).toContain('JK-100 环保热稳定剂产品说明书')
     expect(getDocumentPlainText(jk100!.document)).toContain('文档版本：V1.0生效日期：2026 年 07 月 02 日')
+    expect(getDocumentPlainText(jk619e!.document)).toContain('JK-619E大口径管材环保稳定剂（TDS）')
+    expect(getDocumentPlainText(jk619e!.document)).toContain('生效日期：2026年06月09日')
+    expect(getDocumentPlainText(jk318!.document)).toContain('PVC注塑管件专用钙锌稳定剂JK-318基本介绍')
+    expect(getDocumentPlainText(jk318!.document)).toContain('主要用于注塑管件、线盒等')
+    expect(getDocumentPlainText(jk315!.document)).toContain('SPC地板专用钙锌稳定剂JK-315基本介绍')
+    expect(getDocumentPlainText(jk315!.document)).toContain('主要用于SPC地板、大理石板、石塑墙板等')
     expect(getDocumentPlainText(aft180!.document)).toContain('粉体防团聚剂 AFT-180')
     expect(getDocumentPlainText(aft180!.document)).toContain('•   包装：内塑外编袋包装，净重 25kg。可将小包装于吨包内875KG/包。')
     expect(getDocumentPlainText(f37!.document)).toContain('F-37 高效复合离型润滑脱模助剂TDS')

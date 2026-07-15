@@ -36,6 +36,9 @@ export function SiteFooter({ site }: SiteFooterProps) {
           <p>
             <a href={`tel:${site.phone}`}>{site.phone}</a>
           </p>
+          <p>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </p>
           <p>{site.address}</p>
         </div>
       </div>

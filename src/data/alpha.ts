@@ -39,6 +39,7 @@ export const alphaSite: CompanySite = {
   address: '深圳市雷柏中城生命科学园第3分园 A栋504',
   contactName: '徐军',
   phone: '13609623668',
+  email: 'zest168@126.com',
   factoryImages: sharedFactoryImages,
   products: [
     {
