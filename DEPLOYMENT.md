@@ -202,6 +202,33 @@ http://alpha.tech.gd.cn
 
 ## 7. HTTPS
 
+### 使用本地测试证书
+
+先在腾讯云安全组放行入站 TCP `443`，并把以下文件放在本地项目目录：
+
+```text
+certs/tech.gd.cn.crt
+certs/tech.gd.cn.key
+```
+
+然后使用 Git Bash 执行：
+
+```bash
+bash scripts/enable-test-https.sh
+```
+
+脚本会检查并上传证书、校验证书与私钥、备份 Nginx 配置、启用 HTTPS、将 HTTP `301` 跳转到 HTTPS，并验证两个网站。配置或 reload 失败时会恢复修改前的 Nginx 配置并返回失败。
+
+测试证书不受浏览器信任，浏览器显示安全警告属于预期结果。脚本不会启用 HSTS。
+
+启用 HTTPS 后，后续继续运行 `bash scripts/deploy-production.sh` 时，首次部署问题必须直接回车或输入 `n`。输入 `y` 会让现有生产部署脚本重新生成纯 HTTP 配置。
+
+如使用不同服务器或 SSH 参数：
+
+```bash
+SERVER_HOST='服务器地址' SSH_USER='用户名' SSH_PORT='端口' bash scripts/enable-test-https.sh
+```
+
 正式域名可以访问后，再配置 HTTPS：
 
 ```bash
