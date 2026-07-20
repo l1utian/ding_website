@@ -5,4 +5,6 @@ export const sharedFactoryImages = [
   { src: '/assets/shared/factory/11.png', fit: 'cover' },
   { src: '/assets/shared/factory/12.png', fit: 'contain' },
   { src: '/assets/shared/factory/13.png', fit: 'contain' },
+  { src: '/assets/shared/factory/14.png', fit: 'cover' },
+  { src: '/assets/shared/factory/15.png', fit: 'cover' },
 ] as const satisfies NonEmptyReadonlyArray<FactoryImage>
