@@ -229,13 +229,38 @@ bash scripts/enable-test-https.sh
 SERVER_HOST='服务器地址' SSH_USER='用户名' SSH_PORT='端口' bash scripts/enable-test-https.sh
 ```
 
-正式域名可以访问后，再配置 HTTPS：
+### 部署自动续期
+
+把 `cert-apply-server-linux-x64.tar.gz` 放在项目根目录。这个压缩包是本地部署材料，
+不要提交到 Git。然后使用 Git Bash 执行：
 
 ```bash
-sudo apt install -y certbot python3-certbot-nginx
-sudo certbot --nginx -d jike.tech.gd.cn -d alpha.tech.gd.cn
-sudo certbot renew --dry-run
+bash scripts/deploy-cert-auto-renew.sh
 ```
+
+脚本会把工具安装到服务器 `/opt/cert-apply`，保留旧版本和原有密钥配置，
+并在 root crontab 中安装一条每周一凌晨 `03:00` 执行的检查任务。
+首次部署会在服务器终端依次询问邮箱、DNSPod SecretId、DNSPod SecretKey 和证书目录；
+证书域名固定为 `*.tech.gd.cn`，不会再询问。SecretId 和 SecretKey 输入时不会回显。
+
+部署不会使用强制签发。当前证书剩余时间超过 30 天时只检查、不重新申请。
+真正续期成功后会先执行 `nginx -t`，通过后才 reload Nginx。
+
+如使用不同服务器或 SSH 参数：
+
+```bash
+SERVER_HOST='服务器地址' SSH_USER='用户名' SSH_PORT='端口' bash scripts/deploy-cert-auto-renew.sh
+```
+
+检查定时任务和续期日志：
+
+```bash
+sudo crontab -l
+sudo tail -n 100 /var/log/cert-apply.log
+sudo /opt/cert-apply/run-renew.sh
+```
+
+重复运行部署脚本会更新已有的自动续期任务，不会添加多条重复记录。
 
 之后访问：
 
@@ -289,6 +314,7 @@ sudo systemctl reload nginx
 ```bash
 sudo tail -n 100 /var/log/nginx/access.log
 sudo tail -n 100 /var/log/nginx/error.log
+sudo tail -n 100 /var/log/cert-apply.log
 ```
 
 检查测试站：
