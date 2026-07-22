@@ -41,6 +41,7 @@ export const jikeSite: CompanySite = {
   contactName: '丁丁',
   phone: '13155217718',
   email: '13155217718dd@gmail.com',
+  icpBeian: '粤ICP备2026097852号-1',
   factoryImages: sharedFactoryImages,
   products: [
     {

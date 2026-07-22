@@ -40,14 +40,15 @@ export const alphaSite: CompanySite = {
   contactName: '徐军',
   phone: '13609623668',
   email: 'zest168@126.com',
+  icpBeian: '粤ICP备2026097852号-1',
   factoryImages: sharedFactoryImages,
   products: [
     {
-      slug: 'dh-273',
-      name: 'DH-273 锌烧抑制剂',
+      slug: 'aef-220',
+      name: 'AEF-220 锌烧抑制剂',
       category: '锌烧抑制剂',
       summary: '多元醇酯类化合物，在 PVC 热稳定剂中用作抑制“锌烧”的辅助助剂。',
-      document: wordDocuments.alphaDh273,
+      document: wordDocuments.alphaAef220,
       features: [
         '高效螯合锌离子，阻断催化降解链。',
         '提升 PVC 物料加工塑化效果，并提高初期白度。',

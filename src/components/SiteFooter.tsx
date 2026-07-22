@@ -53,6 +53,15 @@ export function SiteFooter({ site, locale, messages }: SiteFooterProps) {
       <div className="footer-divider">
         <p className="footer-copy">
           © {year} {site.shortName} · {messages.footer.copyright}
+          {' · '}
+          <a
+            className="footer-beian"
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {site.icpBeian}
+          </a>
         </p>
       </div>
     </footer>

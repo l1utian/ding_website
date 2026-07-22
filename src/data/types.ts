@@ -48,6 +48,8 @@ export type CompanySite = Readonly<{
   contactName: string
   phone: string
   email: string
+  /** ICP 备案号，展示于页脚并链接至工信部查询页 */
+  icpBeian: string
   products: NonEmptyReadonlyArray<Product>
   factoryImages: NonEmptyReadonlyArray<FactoryImage>
 }>

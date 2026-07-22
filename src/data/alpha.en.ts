@@ -40,15 +40,16 @@ export const alphaSiteEn: CompanySite = {
   contactName: 'Xu Jun',
   phone: '13609623668',
   email: 'zest168@126.com',
+  icpBeian: '粤ICP备2026097852号-1',
   factoryImages: sharedFactoryImages,
   products: [
     {
-      slug: 'dh-273',
-      name: 'DH-273 Zinc-Burn Inhibitor',
+      slug: 'aef-220',
+      name: 'AEF-220 Zinc-Burn Inhibitor',
       category: 'Zinc-burn inhibitor',
       summary:
         'Polyol ester compound used as an auxiliary to suppress zinc burn in PVC heat stabilizers.',
-      document: wordDocuments.alphaDh273,
+      document: wordDocuments.alphaAef220,
       features: [
         'Efficiently chelates zinc ions and blocks catalytic degradation.',
         'Improves plasticization and early whiteness.',
